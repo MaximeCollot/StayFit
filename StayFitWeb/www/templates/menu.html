@@ -8,7 +8,7 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
         <div class="buttonsHeader bar">
 
-            <button class="button button-clear button-light buttonHeader" ng-click="goToSuivi()">Suivi</button>
+            <a class="button button-clear button-light buttonHeader" ng-click="goToSuivi()">Suivi</a>
             <button class="button button-clear button-light buttonHeader" ng-click="goToSport()">Sport</button>
             <button class="button button-clear  button-light buttonHeader" ng-click="goToNutrition()">Nutrition</button>
             <button style="display: none"></button>
@@ -26,10 +26,13 @@
     <ion-header-bar class="bar-stable">
       <h1 class="title" ng-if="!user.isConnected">Mon Compte</h1><h1 class="title" ng-if="user.isConnected">{{user.mail}}</h1>
     </ion-header-bar>
-    <ion-content>
+    <ion-content scroll="false">
       <ion-list>
         <ion-item ng-if="!user.isConnected" menu-close ng-click="login()">
-          Login
+          Connexion
+        </ion-item>
+        <ion-item ng-if="!user.isConnected" menu-close ng-click="subscribe()">
+          Inscription
         </ion-item>
         <ion-item ng-if="user.isConnected" menu-close href="#/app/profil">
           Mon profil
@@ -42,6 +45,20 @@
         </ion-item>
       </ion-list>
     </ion-content>
+    <div class="bottomItem">
+  <div class="row">
+        <div class="col">
+            <ion-item menu-close href="#/app/objectif">
+              Contact
+            </ion-item>
+        </div>
+        <div class="col">
+            <ion-item menu-close href="#/app/objectif">
+              A propos
+            </ion-item>
+        </div>
+    </div>
+</div>
   </ion-side-menu>
 
 </ion-side-menus>

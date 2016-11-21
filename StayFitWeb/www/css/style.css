@@ -10,5 +10,13 @@
 .buttonHeader {
 
 	width: 30%;
+	color: #fff;
+
+}
+
+.bottomItem {
+
+	position: absolute;
+    bottom: 5px;
 
 }
