@@ -22,7 +22,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+  $ionicConfigProvider.tabs.position('top');
+
   $stateProvider
 
     .state('app', {
@@ -30,6 +32,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
+  })
+
+  .state('app.welcome', {
+    url: '/welcome',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/welcome.html'
+      }
+    }
   })
 
   .state('app.profil', {
@@ -59,25 +70,32 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-    .state('app.playlists', {
-      url: '/playlists',
+  .state('app.suivi', {
+      url: '/suivi',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/suivi.html'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+  .state('app.sport', {
+      url: '/sport',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/sport.html'
+        }
       }
-    }
-  });
+    })
+
+  .state('app.nutrition', {
+      url: '/nutrition',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/nutrition.html'
+        }
+      }
+    })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app');
+  $urlRouterProvider.otherwise('/app/welcome');
 });

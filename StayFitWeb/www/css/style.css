@@ -1,1 +1,14 @@
-/* Empty. Add your own CSS if you like */
+.buttonsHeader {
+
+	width: 95%;
+	margin-left: 45px;
+	top: 0;
+	border-bottom-width: 0;
+
+}
+
+.buttonHeader {
+
+	width: 30%;
+
+}
