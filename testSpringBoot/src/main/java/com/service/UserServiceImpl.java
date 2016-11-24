@@ -25,5 +25,29 @@ public class UserServiceImpl implements UserService {
     public Iterable<User> findAll() {
         return userRepo.findAll();
     }
-    
+
+ /*   @Override
+    public String getEmail(Long iduser) {
+        return userRepo.getEmail(iduser);
+    } */
+
+    @Override
+    public User findOne(Long id) {
+        return userRepo.findOne(id);
+    }
+
+    @Override
+    public boolean exists(Long id) {
+        return userRepo.exists(id);
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepo.delete(id);
+    }
+
+    @Override
+    public void delete(User u) {
+         userRepo.delete(u);
+    }
 }
