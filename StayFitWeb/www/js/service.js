@@ -1,11 +1,11 @@
 .factory('userService', function($http) {
-	var users = [];
+	var user = [];
 
 	return {
-		getUsers: function(){
+		authenticate: function(user){
+			var retour = {};
 			return $http.get("https://www.yoursite.com/users").then(function(response){
-				users = response;
-				return users;
+				return response;
 			});
 		}
 	}

@@ -3,7 +3,7 @@
     <h1 class="title">Subscribe</h1>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doSubscribe()">
+    <form name="suscribeForm" ng-submit="doSubscribe(newUser)">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Mail</span>
@@ -15,12 +15,16 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Confirm password</span>
-          <input type="password" ng-model="newUser.confirmPassword" required>
-          <span>Les mots de passe doivent être identiques</span>
+          <input type="password" name="confirmPassword" ng-model="newUser.confirmPassword" required>
         </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Subscribe</button>
         </label>
+        <ng-messages for="expression" role="alert">
+          <ng-message when="stringValue">...</ng-message>
+          <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+          <ng-message when-exp="expressionValue">...</ng-message>
+        </ng-messages>
       </div>
     </form>
   </ion-content>

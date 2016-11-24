@@ -13,7 +13,6 @@ angular.module('starter.controllers', [])
   $scope.goToSuivi = function() {
 
     $state.go('app.suivi');
-    // $location.path("/app/suivi")
   };
 
   $scope.goToSport = function() {
@@ -39,6 +38,10 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
+
+      //userService.authenticate($scope.user);
+
+
     $scope.user.isConnected=true;
     console.log('Doing login', $scope.user);
 
@@ -61,9 +64,15 @@ angular.module('starter.controllers', [])
     });
   };
 
-  $scope.doSubscribe = function() {
+  $scope.doSubscribe = function(newUser) {
+    if (newUser.password != newUser.confirmPassword) {
+
+
+
+    }
+    $scope.user.mail=newUser.mail;
     $scope.user.isConnected=true;
-    console.log('Doing login', $scope.user);
+    console.log('Doing subscribe', $scope.user);
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
@@ -75,4 +84,4 @@ angular.module('starter.controllers', [])
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   })
-});
+})

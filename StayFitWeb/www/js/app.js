@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'pages/menu/menu.html',
     controller: 'AppCtrl'
   })
 
@@ -38,7 +38,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/welcome',
     views: {
       'menuContent': {
-        templateUrl: 'templates/welcome.html'
+        templateUrl: 'pages/welcome/welcome.html'
       }
     }
   })
@@ -47,7 +47,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/profil',
     views: {
       'menuContent': {
-        templateUrl: 'templates/profil.html'
+        templateUrl: 'pages/profil/profil.html'
       }
     }
   })
@@ -56,7 +56,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/information',
     views: {
       'menuContent': {
-        templateUrl: 'templates/information.html'
+        templateUrl: 'pages/information/information.html'
       }
     }
   })
@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/objectif',
       views: {
         'menuContent': {
-          templateUrl: 'templates/objectif.html'
+          templateUrl: 'pages/objectif/objectif.html'
         }
       }
     })
@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/suivi',
       views: {
         'menuContent': {
-          templateUrl: 'templates/suivi.html'
+          templateUrl: 'pages/suivi/suivi.html'
         }
       }
     })
@@ -83,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/sport',
       views: {
         'menuContent': {
-          templateUrl: 'templates/sport.html'
+          templateUrl: 'pages/sport/sport.html'
         }
       }
     })
@@ -92,7 +92,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/nutrition',
       views: {
         'menuContent': {
-          templateUrl: 'templates/nutrition.html'
+          templateUrl: 'pages/nutrition/nutrition.html'
         }
       }
     })
@@ -101,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/contact',
       views: {
         'menuContent': {
-          templateUrl: 'templates/contact.html'
+          templateUrl: 'pages/contact.html'
         }
       }
     })
@@ -110,7 +110,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/about',
       views: {
         'menuContent': {
-          templateUrl: 'templates/about.html'
+          templateUrl: 'pages/about.html'
         }
       }
     })
