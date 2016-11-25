@@ -45,6 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers','objectif.controllers'
 
   .state('app.profil', {
     url: '/profil',
+    controller: 'ProfilCtrl',
     views: {
       'menuContent': {
         templateUrl: 'pages/profil/profil.html'
