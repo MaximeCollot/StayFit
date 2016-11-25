@@ -1,9 +1,7 @@
-angular.module('starter.controllers', [])
+angular.module('menu.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location) {
 
-  // Form data for the login modal
-  $scope.user = {mail:'', password:'', isConnected:false};
 
   // Triggered in the login modal to close it
   $scope.closeModal = function() {
@@ -27,7 +25,7 @@ angular.module('starter.controllers', [])
 
   // Open the login modal
   $scope.login = function() {
-    $ionicModal.fromTemplateUrl('templates/login.html', {
+    $ionicModal.fromTemplateUrl('pages/menu/login.html', {
     scope: $scope
     }).then(function(modal) {
       if ($scope.modal != null) $scope.modal.close();
@@ -56,7 +54,7 @@ angular.module('starter.controllers', [])
     if ($scope.modal != null) {
       $scope.modal.remove();
     }
-    $ionicModal.fromTemplateUrl('templates/subscribe.html', {
+    $ionicModal.fromTemplateUrl('pages/menu/subscribe.html', {
     scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
@@ -85,3 +83,16 @@ angular.module('starter.controllers', [])
     $scope.modal.remove();
   })
 })
+
+
+.directive('vEquals', ['$parse', function vEqualsDirective($parse) {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            ngModel.$validators.vEquals = function(value) {
+                return value === $parse(attrs.vEquals)(scope);
+            }
+        }
+    };
+}]);
