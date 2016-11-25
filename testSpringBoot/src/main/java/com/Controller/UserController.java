@@ -8,10 +8,13 @@ package com.Controller;
 import com.Model.User;
 import com.service.UserService;
 import java.util.List;
+import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
+import static org.hibernate.internal.CoreLogging.logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

@@ -13,7 +13,7 @@ public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iduser;
+    private Long iduser;
     
     @Column(name="user_lastname")
     private String name;
@@ -50,11 +50,11 @@ public class User {
     }
 
     
-    public int getIduser() {
+    public Long getIduser() {
         return iduser;
     }
 
-    public void setIduser(int iduser) {
+    public void setIduser(Long iduser) {
         this.iduser = iduser;
     }
 
