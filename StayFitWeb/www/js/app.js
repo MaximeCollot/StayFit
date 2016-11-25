@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 
 angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'ngMessages'])
-.run(function($ionicPlatform,$rootScope) {
+.run(function($ionicPlatform,$rootScope,$ionicHistory) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,6 +22,10 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   });
 
   $rootScope.user = {mail:'', password:'', obectif:'', isConnected:false};
+
+  $rootScope.goBack = function () {
+    $ionicHistory.goBack();
+  }
 })
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
