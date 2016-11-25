@@ -1,24 +1,70 @@
 <ion-view>
   <ion-content>
  <h1>Profil</h1>
-
- <ion-list ng-controller="ProfilCtrl">
     <div class="list card">
   <div class="item item-avatar">
-  <img src="ressources/profil.png">
-    <h2>{{objectif.name}}</h2>
+  <img src="ressources/profil.jpg">
+    <h1>{{user.firstName}} {{user.lastName}}</h1>
+    <p>{{user.birthday}}</p>
   </div>
-  <div class="item item-body">
-    <img class="full-image" ng-src="{{objectif.image}}">
-    
-    <p>
-     {{objectif.description}}
 
-    </p>
+  
+   <div class="item item-body">
+  <div class="item item-avatar">
+  <img src="ressources/mail.png">
+    <h2>{{user.mail}}</h2>
+  </div>
+  <div class="item item-avatar">
+  <img src="ressources/taille.png">
+    <h2>{{user.size}} cm</h2>
+  </div>
+  </div>
+
+  mail:'', 
+  	obectif:'', 
+  	isConnected:false, 
+  	firstName: "Chris", 
+    lastName: "Weakness", 
+	 birthday: "13/01/1995",
+	 size: "193",
+	 creation_date: "25/11/2016",
+	 is_coach: true,
+	 is_dietitian: true};
+
+
+  <div class="item item-body">
+  <div class="list">
+  <label class="item item-input item-stacked-label">
+   	 <span class="input-label">First Name</span>
+   	 <input type="text" placeholder={{user.firstName}}>
+  </label>
+  <label class="item item-input item-stacked-label">
+    	<span class="input-label">Last Name</span>
+   	 <input type="text" placeholder={{user.lastName}}>
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Email</span>
+    <input type="text" placeholder="john@suhr.com">
+  </label>
+  <ion-checkbox ng-checked="user.is_coach">
+          Coach
+  </ion-checkbox>
+  <ion-checkbox ng-checked="user.is_dietitian">
+          Dieteticien
+  </ion-checkbox>
+</div>
+
+
+
     <p>
-    	<ion-checkbox ng-checked="objectif.checked">
-          Choisir ce programme
+    	<ion-checkbox ng-checked="user.is_coach">
+          Coach
         </ion-checkbox>
+    </p>
+     <p>
+    	<ion-checkbox ng-checked="user.is_dietitian">
+          Dieteticien
+     </ion-checkbox>
     </p>
   </div>
 </div>
