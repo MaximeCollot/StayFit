@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
 
   // Open the login modal
   $scope.login = function() {
-    $ionicModal.fromTemplateUrl('templates/login.html', {
+    $ionicModal.fromTemplateUrl('pages/menu/login.html', {
     scope: $scope
     }).then(function(modal) {
       if ($scope.modal != null) $scope.modal.close();
@@ -56,7 +56,7 @@ angular.module('starter.controllers', [])
     if ($scope.modal != null) {
       $scope.modal.remove();
     }
-    $ionicModal.fromTemplateUrl('templates/subscribe.html', {
+    $ionicModal.fromTemplateUrl('pages/menu/subscribe.html', {
     scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
