@@ -30,11 +30,12 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	isConnected:false, 
   	firstName: "Chris", 
   	lastName: "Weakness", 
-	birthday: "13/01/1995",
-	size: "193",
-	creation_date: "25/11/2016",
-	is_coach: true,
-	is_dietitian: true};
+  	birthday: "13/01/1995",
+  	size: "193",
+  	creation_date: "25/11/2016",
+  	is_coach: true,
+  	is_dietitian: true
+  };
 })
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
@@ -79,7 +80,6 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   .state('app.objectif', {
       url: '/objectif',
-      controller: 'ObjectifCtrl',
       views: {
         'menuContent': {
           templateUrl: 'pages/objectif/objectif.html'
