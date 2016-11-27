@@ -32,13 +32,13 @@
         <ion-item ng-if="!user.isConnected" menu-close ng-click="subscribe()">
           Inscription
         </ion-item>
-        <ion-item ng-if="user.isConnected" menu-close href="#/app/profil">
+        <ion-item ng-if="user.isConnected" menu-close ng-click="goToProfil()">
           Mon profil
         </ion-item>
-        <ion-item ng-if="user.isConnected" menu-close href="#/app/information">
+        <ion-item ng-if="user.isConnected" menu-close ng-click="goToInfos()">
           Mes informations
         </ion-item>
-        <ion-item ng-if="user.isConnected" menu-close href="#/app/objectif">
+        <ion-item ng-if="user.isConnected" menu-close ng-click="goToObjectif()">
           Mon objectif
         </ion-item>
       </ion-list>

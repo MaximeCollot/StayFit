@@ -23,6 +23,21 @@ angular.module('menu.controllers', [])
     $state.go('app.nutrition');
   };
 
+  $scope.goToProfil = function() {
+
+    $state.go('app.profil');
+  };
+
+  $scope.goToInfos = function() {
+
+    $state.go('app.information');
+  };
+
+  $scope.goToObjectif = function() {
+
+    $state.go('app.objectif');
+  };
+
   // Open the login modal
   $scope.login = function() {
     $ionicModal.fromTemplateUrl('pages/menu/login.html', {
