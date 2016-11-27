@@ -23,6 +23,7 @@ angular.module('objectif.controllers', [])
 
 	// Quand on sélectionne un nouvel objectif, on décoche les autres
 	$scope.changeObjectif = function(objectif) {
+		$scope.user.objectif = objectif.name;
 		$scope.ListObjectif.forEach(function(item,index) {
 			if (objectif != item) {
 				$scope.ListObjectif[index].checked = false;
