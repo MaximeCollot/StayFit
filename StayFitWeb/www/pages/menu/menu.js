@@ -43,7 +43,7 @@ angular.module('menu.controllers', [])
     $ionicModal.fromTemplateUrl('pages/menu/login.html', {
     scope: $scope
     }).then(function(modal) {
-      if ($scope.modal != null) $scope.modal.close();
+      if ($scope.modal != null) $scope.modal.remove();
       $scope.modal = modal;
       $scope.modal.show();
     });
@@ -57,12 +57,7 @@ angular.module('menu.controllers', [])
 
     $scope.user.isConnected=true;
     console.log('Doing login', $scope.user);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeModal();
-    }, 1000);
+    $scope.closeModal();
   };
 
   $scope.subscribe = function() {
@@ -72,6 +67,7 @@ angular.module('menu.controllers', [])
     $ionicModal.fromTemplateUrl('pages/menu/subscribe.html', {
     scope: $scope
     }).then(function(modal) {
+      if ($scope.modal != null) $scope.modal.remove();
       $scope.modal = modal;
       $scope.modal.show();
     });
@@ -86,12 +82,6 @@ angular.module('menu.controllers', [])
     $scope.user.mail=newUser.mail;
     $scope.user.isConnected=true;
     console.log('Doing subscribe', $scope.user);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    //$timeout(function() {
-    //  $scope.closeModal();
-    //}, 1000);
   };
 
   $scope.$on('$destroy', function() {
