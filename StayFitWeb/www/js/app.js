@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'information.controllers', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     views: {
       'menuContent': {
         templateUrl: 'pages/profil/profil.html',
-        controller: 'ProfilCtrl',
+        controller: 'ProfilCtrl'
       }
     }
   })
@@ -73,7 +73,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     url: '/information',
     views: {
       'menuContent': {
-        templateUrl: 'pages/information/information.html'
+        templateUrl: 'pages/information/information.html',
+        controller: 'ProfilCtrl'
       }
     }
   })
