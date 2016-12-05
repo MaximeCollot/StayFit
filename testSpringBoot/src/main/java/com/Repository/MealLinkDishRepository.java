@@ -13,9 +13,10 @@ import org.springframework.stereotype.Repository;
  *
  * @author florian
  */
+/*
 @Repository
 public interface MealLinkDishRepository extends CrudRepository<MealLinkDish, Long>{
     
     
-}
+} */
 

@@ -9,15 +9,12 @@ import java.util.Date;
 public class BodyUser {
     
     @Id
-    @ManyToOne
+   // @ManyToOne
     @JoinColumn(name = "t_user_iduser", referencedColumnName="iduser")
     private int idUser;
     
     @Column(name="bodyuser_weight")
     private String weight;
-    
-    @Column(name="bodyuser_gracemasse")
-    private int graceMasse;
     
     @Column(name="bodyuser_recorde_date")
     private Date recordDate;
@@ -58,19 +55,7 @@ public class BodyUser {
         this.weight = weight;
     }
 
-    /**
-     * @return the graceMasse
-     */
-    public int getGraceMasse() {
-        return graceMasse;
-    }
-
-    /**
-     * @param graceMasse the graceMasse to set
-     */
-    public void setGraceMasse(int graceMasse) {
-        this.graceMasse = graceMasse;
-    }
+   
 
     /**
      * @return the recordDate
