@@ -7,7 +7,7 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Mail</span>
-          <input type="text" name="mail" id="mail" ng-model="newUser.mail" required>
+          <input type="text" name="mail" id="mail" ng-model="newUser.mail" required autofocus>
         </label>
         <div class="errorInput" ng-messages="suscribeForm.mail.$error" ng-show="suscribeForm.mail.$touched || suscribeForm.mail.$submitted"> 
             <div ng-message="required">Ce champ doit être rempli</div> 

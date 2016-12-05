@@ -1,7 +1,8 @@
 <ion-view>
   <ion-content>
-  <h1>Profil</h1>
     <div class="list card">
+      <h1 class="title">Profil</h1>
+      
       <div class="item item-avatar">
       <img src="ressources/profil.jpg">
         <h1>{{user.firstName}} {{user.lastName}}</h1>
@@ -11,11 +12,11 @@
   
        <div class="item item-body">
         <div class="item item-avatar">
-        <img src="ressources/mail.png">
+        <img class="customIcon" src="ressources/mail.png">
           <h2>{{user.mail}}</h2>
         </div>
         <div class="item item-avatar">
-        <img src="ressources/taille.png">
+        <img class="customIcon" src="ressources/height.png">
           <h2>{{user.size}} cm</h2>
         </div>
       </div>

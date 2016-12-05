@@ -12,7 +12,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+      cordova.plugins.Keyboard.disableScroll(false);
 
     }
     if (window.StatusBar) {
@@ -21,18 +21,18 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     }
   });
 
-  $rootScope.user = {mail:'', password:'', obectif:'', isConnected:false};
-
   $rootScope.user = {
   	mail:'', 
   	password:'', 
   	objectif:"Prise de masse", 
-  	isConnected:false, 
+  	isConnected:true, 
   	firstName: "Chris", 
   	lastName: "Weakness", 
   	birthday: "13/01/1995",
-  	size: "193",
-  	creation_date: "25/11/2016",
+  	size: 193,
+    weight: 90,
+    percentage: 18,
+    creation_date: "25/11/2016",
   	is_coach: true,
   	is_dietitian: true
   };
@@ -60,7 +60,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   })
 
   .state('app.profil', {
-    url: '/profil',
+    url: '/',
     views: {
       'menuContent': {
         templateUrl: 'pages/profil/profil.html',
@@ -70,17 +70,17 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   })
 
   .state('app.information', {
-    url: '/information',
+    url: '/',
     views: {
       'menuContent': {
         templateUrl: 'pages/information/information.html',
-        controller: 'ProfilCtrl'
+        controller: 'InformationCtrl'
       }
     }
   })
 
   .state('app.objectif', {
-      url: '/objectif',
+      url: '/',
       views: {
         'menuContent': {
           templateUrl: 'pages/objectif/objectif.html'
@@ -89,7 +89,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     })
 
   .state('app.suivi', {
-      url: '/suivi',
+      url: '/',
       views: {
         'menuContent': {
           templateUrl: 'pages/suivi/suivi.html'
@@ -98,7 +98,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     })
 
   .state('app.sport', {
-      url: '/sport',
+      url: '/',
       views: {
         'menuContent': {
           templateUrl: 'pages/sport/sport.html'
@@ -107,7 +107,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     })
 
   .state('app.nutrition', {
-      url: '/nutrition',
+      url: '/',
       views: {
         'menuContent': {
           templateUrl: 'pages/nutrition/nutrition.html'
@@ -116,7 +116,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     })
 
   .state('app.contact', {
-      url: '/contact',
+      url: '/',
       views: {
         'menuContent': {
           templateUrl: 'pages/contact.html'
@@ -125,7 +125,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     })
 
   .state('app.about', {
-      url: '/about',
+      url: '/',
       views: {
         'menuContent': {
           templateUrl: 'pages/about.html'

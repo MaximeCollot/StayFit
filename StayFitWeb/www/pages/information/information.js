@@ -1,20 +1,20 @@
 angular.module('information.controllers', [])
 
 .controller('InformationCtrl', function($scope) {
-	$scope.modif = {firstName:'', lastName:'', mail:''};
+	$scope.modif = {weight:'', size:'', percentage:''};
 
-	$scope.doProfilModification = function (modif) {
+	$scope.doInformationModification = function (modif) {
 		console.log(modif);
-		if (modif.firstName != ''){
-			$scope.user.firstName = modif.firstName;
+		if (modif.weight != ''){
+			$scope.user.weight = modif.weight;
 		}
-		if (modif.lastName != ''){
-			$scope.user.lastName = modif.lastName;
+		if (modif.size != ''){
+			$scope.user.size = modif.size;
 		}
-		if (modif.mail != ''){
-			$scope.user.mail = modif.mail;
+		if (modif.percentage != ''){
+			$scope.user.percentage = modif.percentage;
 		}
-		$scope.modif = {firstName:'', lastName:'', mail:''};
+		$scope.modif = {poids:'', size:'', percentage:''};
 	}
 
 
