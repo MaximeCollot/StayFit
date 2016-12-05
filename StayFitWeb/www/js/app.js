@@ -27,12 +27,13 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	objectif:"Prise de masse", 
   	isConnected:true, 
   	firstName: "Chris", 
-  	lastName: "Weakness", 
+  	lastName: "Van Damme", 
   	birthday: "13/01/1995",
   	size: 193,
     weight: 90,
     percentage: 18,
     creation_date: "25/11/2016",
+    sexe: "Male",
   	is_coach: true,
   	is_dietitian: true
   };

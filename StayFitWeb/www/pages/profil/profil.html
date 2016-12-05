@@ -1,9 +1,8 @@
 <ion-view>
   <ion-content>
+  <h1 class="title">Profil</h1>
     <div class="list card">
-      <h1 class="title">Profil</h1>
-      
-      <div class="item item-avatar">
+      <div class="item item-thumbnail-left">
       <img src="ressources/profil.jpg">
         <h1>{{user.firstName}} {{user.lastName}}</h1>
         <p>{{user.birthday}}</p>
@@ -18,39 +17,55 @@
         <div class="item item-avatar">
         <img class="customIcon" src="ressources/height.png">
           <h2>{{user.size}} cm</h2>
+        <div class="item item-avatar">
+        <img src="ressources/sexe.png">
+          <h2>Sexe :</h2>
+          <h3>{{user.sexe}}</h3>
+        </div>
+        <div class="item item-avatar">
+        <img src="ressources/objectif.png">
+          <h2>Objectif :</h2>
+          <h3>{{user.objectif}}</h3>
+        </div>
+        <div class="item item-avatar" ng-show={{user.is_coach}}>
+        <img src="ressources/coach.png">
+          <h2>Profil spécial :<h2>
+          <h3> Coach sportif<h3>
+        </div>
+        <div class="item item-avatar" ng-show={{user.is_dietitian}}>
+        <img src="ressources/diet.png">
+          <h2>Profil spécial :<h2>
+          <h3>Coach Dietetique</h3>
         </div>
       </div>
 
-      {{user}}
+      <label class="item">
+            <button class="button button-block button-balanced" ng-click="showProfilModification()">Modification</button>
+      </label>
 
-
-      <div class="item item-body">
+      <div class="item item-body" ng-show="modif.showModification">
         <form name="profilForm" ng-submit="doProfilModification(modif)">
           <label class="item item-input item-stacked-label">
-         	  <span class="input-label">First Name</span>
+         	  <span class="input-label">Prénom :</span>
          	  <input type="text" ng_model="modif.firstName" placeholder={{user.firstName}}>
           </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Last Name</span>
+            <span class="input-label">Nom :</span>
          	  <input type="text" ng_model="modif.lastName" placeholder={{user.lastName}}>
           </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Email</span>
-            <input type="text" ng_model="modif.mail" placeholder="{{user.mail}}@suhr.com">
+            <span class="input-label">Sexe :</span>
+            <input type="text" ng_model="modif.sexe" placeholder={{user.sexe}}>
           </label>
-          <label class="item">
-            <button class="button button-block button-balanced" type="submit">Save</button>
-          </label>
+      <label class="item">
+        <button class="button button-block button-balanced" type="submit">Save</button>
+      </label>
         </form>
       </div>
 
 
-    	<ion-checkbox ng-checked="user.is_coach">
-        Coach
-      </ion-checkbox>
-      <ion-checkbox ng-checked="user.is_dietitian">
-        Dieteticien
-      </ion-checkbox>
+
+
     </div>
   </ion-content>
 </ion-view>
