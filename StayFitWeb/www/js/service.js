@@ -1,12 +1,27 @@
+angular.module('services', [])
+
 .factory('userService', function($http) {
 	var user = [];
 
 	return {
 		authenticate: function(user){
-			var retour = {};
-			return $http.get("https://www.yoursite.com/users").then(function(response){
-				return response;
-			});
+			var data = {email: user.mail, psw: user.password};
+			console.log(data);
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:8080/userConnect/create',
+				params: data
+			})
+		},
+
+		suscribe: function(user){
+			var data = {email: user.mail, psw: user.password};
+			console.log(data);
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:8080/userConnect/create',
+				params: data
+			})
 		}
 	}
 })

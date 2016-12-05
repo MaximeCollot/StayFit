@@ -1,6 +1,6 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService) {
 
 
   // Triggered in the login modal to close it
@@ -74,14 +74,22 @@ angular.module('menu.controllers', [])
   };
 
   $scope.doSubscribe = function(newUser) {
-    if (newUser.password != newUser.confirmPassword) {
+    if (newUser.password == newUser.confirmPassword) {
+      var retour = userService.suscribe(newUser)
 
-
-
-    }
-    $scope.user.mail=newUser.mail;
-    $scope.user.isConnected=true;
-    console.log('Doing subscribe', $scope.user);
+      retour.then(function(response) {
+        if (response.status == 200) {
+          $scope.user.mail=newUser.mail;
+          $scope.user.isConnected=true;
+          console.log("suscribe ok");
+          $scope.closeModal();
+        }else{
+          // TODO afficher erreur
+        }
+      })
+    }else{
+      // TODO afficher erreur
+    }    
   };
 
   $scope.$on('$destroy', function() {

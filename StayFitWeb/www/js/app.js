@@ -1,11 +1,4 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'information.controllers', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'information.controllers', 'services', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -25,7 +18,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	mail:'', 
   	password:'', 
   	objectif:"Prise de masse", 
-  	isConnected:true, 
+  	isConnected:false, 
   	firstName: "Chris", 
   	lastName: "Van Damme", 
   	birthday: "13/01/1995",
@@ -39,8 +32,9 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   };
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$httpProvider) {
   $ionicConfigProvider.tabs.position('top');
+  //$httpProvider.defaults.headers.post = {'Origin': 'http://localhost:8080'};
 
   $stateProvider
 
