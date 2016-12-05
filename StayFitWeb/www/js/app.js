@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'information.controllers', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -30,11 +30,12 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	isConnected:false, 
   	firstName: "Chris", 
   	lastName: "Weakness", 
-	birthday: "13/01/1995",
-	size: "193",
-	creation_date: "25/11/2016",
-	is_coach: true,
-	is_dietitian: true};
+  	birthday: "13/01/1995",
+  	size: "193",
+  	creation_date: "25/11/2016",
+  	is_coach: true,
+  	is_dietitian: true
+  };
 })
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
@@ -60,10 +61,10 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   .state('app.profil', {
     url: '/profil',
-    controller: 'ProfilCtrl',
     views: {
       'menuContent': {
-        templateUrl: 'pages/profil/profil.html'
+        templateUrl: 'pages/profil/profil.html',
+        controller: 'ProfilCtrl'
       }
     }
   })
@@ -72,14 +73,14 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     url: '/information',
     views: {
       'menuContent': {
-        templateUrl: 'pages/information/information.html'
+        templateUrl: 'pages/information/information.html',
+        controller: 'ProfilCtrl'
       }
     }
   })
 
   .state('app.objectif', {
       url: '/objectif',
-      controller: 'ObjectifCtrl',
       views: {
         'menuContent': {
           templateUrl: 'pages/objectif/objectif.html'

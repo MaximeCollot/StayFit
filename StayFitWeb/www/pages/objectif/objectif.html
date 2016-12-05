@@ -17,9 +17,11 @@
 
     </p>
     <p>
-    	<ion-checkbox ng-checked="objectif.checked">
-          Choisir ce programme
-        </ion-checkbox>
+    	<ion-checkbox ng-checked="objectif.checked" ng-disabled="objectif.checked" ng-click="changeObjectif(objectif)">
+        <label ng-if="!objectif.checked">Choisir ce programme</label>
+        <label ng-if="objectif.checked">Vous suivez ce programme</label>
+      </ion-checkbox>
+
     </p>
   </div>
 </div>

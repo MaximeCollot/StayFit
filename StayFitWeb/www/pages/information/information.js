@@ -1,7 +1,6 @@
-angular.module('profil.controllers', [])
+angular.module('information.controllers', [])
 
-.controller('ProfilCtrl', function($scope) {
-	console.log('ProfilCtrl');
+.controller('InformationCtrl', function($scope) {
 	$scope.modif = {firstName:'', lastName:'', mail:''};
 
 	$scope.doProfilModification = function (modif) {

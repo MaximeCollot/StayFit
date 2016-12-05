@@ -50,4 +50,9 @@ public class UserServiceImpl implements UserService {
     public void delete(User u) {
          userRepo.delete(u);
     }
+
+    @Override
+    public void save(User u) {
+        userRepo.save(u);
+    }
 }
