@@ -12,6 +12,9 @@ import com.service.UserConnectService;
 import com.service.UserService;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,37 +38,51 @@ public class UserConnectController {
        return userConnectService.findAll();
     }
     
+    @RequestMapping(method = RequestMethod.GET, value = "/userConnect/find/{id}")
+     public UserConnect findUserConnect(@PathVariable Long id) {
+         UserConnect user = new UserConnect();
+       try {
+            if (userConnectService.exists(id)) {
+                 user = userConnectService.findOne(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return null;
+        }
+        return user; 
+     }
     
-    
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/create")
     @ResponseBody
-    public String createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
+    public HttpStatus createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
         UserConnect u = new UserConnect(email,psw);
         u.setIdUser(new Long(4));
         try {
             userConnectService.save(u);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;
         }
-        return "creation successful: " + String.valueOf(u.getIduser());
+        return  HttpStatus.ACCEPTED;
     }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/userConnect/delete/{id}")
-    public String DeleteUserConnect(@PathVariable Long id) {
+    public HttpStatus DeleteUserConnect(@PathVariable Long id) {
         try {
             if (userConnectService.exists(id)) {
                  userConnectService.delete(id);
             } else {
-                return "Erreur : Utilisateur inconnu";
+                  return HttpStatus.NOT_ACCEPTABLE;
             }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            //return e.getMessage();
         }
-        return "Deletion successful: " ;
-                
+     return HttpStatus.ACCEPTED;                
     }
     
     

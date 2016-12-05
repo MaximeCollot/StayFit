@@ -23,14 +23,14 @@ public class Practice {
     @Column(name="practice_isdone")
     private int isDone;
     
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "t_goal_idt_goal", referencedColumnName ="idt_goal")
     private int idGoal;
     
     @Column(name="practice_is_recommended")
     private int isRecommended;
     
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "t_user_iduser", referencedColumnName ="iduser")
     private int idUser;
     
