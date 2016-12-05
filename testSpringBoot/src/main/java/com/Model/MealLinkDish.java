@@ -7,10 +7,9 @@ package com.Model;
 
 import javax.persistence.*;
 
-//@Entity
+
 @Embeddable //  /!\ A verifier !!!
 @Table(name="t_meallinkdish")
-
 public class MealLinkDish {
    
    // /!\ Pas d'ID !!!!

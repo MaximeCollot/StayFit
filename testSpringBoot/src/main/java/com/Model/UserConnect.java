@@ -21,14 +21,12 @@ import javax.persistence.Table;
 @Table(name = "t_userconnect")
 public class UserConnect {
     
-    @Id
+    
     @Column(name = "t_user_iduser")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_iduser;
     
-    //@OneToOne()
-    //private User user;
-    
+    @Id
     @Column(name = "user_mail")
     private String email;
     

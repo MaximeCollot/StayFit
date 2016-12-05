@@ -17,6 +17,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DishLinkFoodRepository extends CrudRepository<DishLinkFood, Long>{
     
-    
-}*/
+
+} */
 

@@ -38,6 +38,21 @@ public class UserConnectController {
        return userConnectService.findAll();
     }
     
+    @RequestMapping(method = RequestMethod.GET, value = "/userConnect/find/{id}")
+     public UserConnect findUserConnect(@PathVariable Long id) {
+         UserConnect user = new UserConnect();
+       try {
+            if (userConnectService.exists(id)) {
+                 user = userConnectService.findOne(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return null;
+        }
+        return user; 
+     }
     
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/create")
@@ -49,26 +64,25 @@ public class UserConnectController {
             userConnectService.save(u);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return HttpStatus.METHOD_FAILURE;
+            return HttpStatus.NOT_ACCEPTABLE;
         }
-        return HttpStatus.CREATED;
+        return  HttpStatus.ACCEPTED;
     }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/userConnect/delete/{id}")
-    public String DeleteUserConnect(@PathVariable Long id) {
+    public HttpStatus DeleteUserConnect(@PathVariable Long id) {
         try {
             if (userConnectService.exists(id)) {
                  userConnectService.delete(id);
             } else {
-                return "Erreur : Utilisateur inconnu";
+                  return HttpStatus.NOT_ACCEPTABLE;
             }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            //return e.getMessage();
         }
-        return "Deletion successful: " ;
-                
+     return HttpStatus.ACCEPTED;                
     }
     
     
