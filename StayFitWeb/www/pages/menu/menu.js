@@ -38,6 +38,18 @@ angular.module('menu.controllers', [])
     $state.go('app.objectif');
   };
 
+  $scope.goToContact = function() {
+
+    console.log();
+    $state.go('app.contact');
+
+  };
+
+  $scope.goToAbout = function() {
+
+    $state.go('app.about');
+  };
+
   // Open the login modal
   $scope.login = function() {
     $ionicModal.fromTemplateUrl('pages/menu/login.html', {
