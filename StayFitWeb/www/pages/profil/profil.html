@@ -50,19 +50,19 @@
         <form name="profilForm" ng-submit="doProfilModification(modif)">
           <label class="item item-input item-stacked-label">
          	  <span class="input-label">Prénom :</span>
-         	  <input type="text" ng_model="modif.firstName" placeholder={{user.firstName}}>
+         	  <input type="text" ng-model="modif.firstName" placeholder={{user.firstName}}>
           </label>
           <label class="item item-input item-stacked-label">
             <span class="input-label">Nom :</span>
-         	  <input type="text" ng_model="modif.lastName" placeholder={{user.lastName}}>
+         	  <input type="text" ng-model="modif.lastName" placeholder={{user.lastName}}>
           </label>
           <label class="item item-input item-stacked-label">
             <span class="input-label">Date de naissance :</span>
-            <input type="date" ng_model="modif.birthday" placeholder={{user.birthday}}>
+            <input type="text" ng-model="modif.birthday" placeholder={{user.birthday}}>
           </label>
           <label class="item item-input item-stacked-label">
             <span class="input-label">Sexe :</span>
-            <input type="text" ng_model="modif.sexe" placeholder={{user.sexe}}>
+            <input type="text" ng-model="modif.sexe" placeholder={{user.sexe}}>
           </label>
       <label class="item">
         <button class="button button-block button-balanced" type="submit">Save</button>

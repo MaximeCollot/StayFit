@@ -25,7 +25,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	mail:'', 
   	password:'', 
   	objectif:"Prise de masse", 
-  	isConnected:true, 
+  	isConnected:false, 
   	firstName: "Chris", 
   	lastName: "Van Damme", 
   	birthday: "13/01/1995",
