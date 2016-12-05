@@ -89,9 +89,9 @@ angular.module('menu.controllers', [])
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
-    $timeout(function() {
-      $scope.closeModal();
-    }, 1000);
+    //$timeout(function() {
+    //  $scope.closeModal();
+    //}, 1000);
   };
 
   $scope.$on('$destroy', function() {

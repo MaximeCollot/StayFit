@@ -12,7 +12,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+      cordova.plugins.Keyboard.disableScroll(false);
 
     }
     if (window.StatusBar) {
@@ -27,10 +27,11 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	mail:'', 
   	password:'', 
   	objectif:"Prise de masse", 
-  	isConnected:false, 
+  	isConnected:true, 
   	firstName: "Chris", 
-  	lastName: "Weakness", 
+  	lastName: "Van Damme", 
   	birthday: "13/01/1995",
+    sexe: "Male",
   	size: "193",
   	creation_date: "25/11/2016",
   	is_coach: true,
