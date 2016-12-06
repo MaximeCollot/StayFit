@@ -23,12 +23,12 @@ public class PracticeLinkExercise {
     @Column(name="exercice_duration")
     private int duration;
     
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "t_practice_idt_practice", referencedColumnName ="idt_practice")
     // /!\ idT_Diner à modifier dans BDD !!!
     private int idPractice;
     
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "t_exercise_idt_exercise", referencedColumnName ="idt_exercice")
     private int idExercise;
     

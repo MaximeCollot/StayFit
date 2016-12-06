@@ -22,7 +22,7 @@ public class Dish {
     @Column(name="dish_description")
     private int description;
     
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "t_goal_idt_goal", referencedColumnName ="idt_goal")
     private int idGoal;
     

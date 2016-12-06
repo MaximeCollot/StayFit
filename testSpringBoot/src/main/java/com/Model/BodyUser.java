@@ -9,7 +9,7 @@ import java.util.Date;
 public class BodyUser {
     
     @Id
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "t_user_iduser", referencedColumnName="iduser")
     private int idUser;
     
@@ -21,9 +21,6 @@ public class BodyUser {
     
     @Column(name="bodyuser_recorde_date")
     private Date recordDate;
-    
-    @Column(name="bodyuser_gracemasse")
-    private int gracemasse;
     
     @Column(name="bodyuser_islast")
     private int isLast;
@@ -39,7 +36,7 @@ public class BodyUser {
     public BodyUser(String weight, Date recordDate, int gracemasse, int isLast) {
         this.weight = weight;
         this.recordDate = recordDate;
-        this.gracemasse = gracemasse;
+        this.graceMasse = gracemasse;
         this.isLast = isLast;
     }
 
@@ -86,19 +83,6 @@ public class BodyUser {
         this.recordDate = recordDate;
     }
 
-    /**
-     * @return the gracemasse
-     */
-    public int getGracemasse() {
-        return gracemasse;
-    }
-
-    /**
-     * @param gracemasse the gracemasse to set
-     */
-    public void setGracemasse(int gracemasse) {
-        this.gracemasse = gracemasse;
-    }
 
     /**
      * @return the isLast

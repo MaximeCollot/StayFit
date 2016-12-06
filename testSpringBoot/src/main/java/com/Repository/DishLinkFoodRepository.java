@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
  *
  * @author florian
  */
-@Repository
-public interface DishLinkFoodRepository extends CrudRepository<DishLinkFood, Long>{
-    
-    
-}
+//@Repository
+//public interface DishLinkFoodRepository extends CrudRepository<DishLinkFood, Long>{
+//    
+//    
+//}
 
