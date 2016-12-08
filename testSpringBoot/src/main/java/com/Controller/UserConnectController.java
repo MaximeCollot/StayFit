@@ -57,7 +57,6 @@ public class UserConnectController {
     @ResponseBody
     public HttpStatus createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
         UserConnect u = new UserConnect(email,psw);
-        u.setIdUser(new Long(4));
         try {
             userConnectService.save(u);
         } catch (Exception e) {
