@@ -6,12 +6,18 @@
 package com.service;
 
 import com.Model.UserConnect;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author louis
  */
 public interface UserConnectService {
+    
+        public Long findIdByEmail(@Param("email") String email);
+    
+        public String findPswByEmail(@Param("email") String email);
     
         public  Iterable<UserConnect> findAll();
         

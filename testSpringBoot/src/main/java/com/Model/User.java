@@ -60,7 +60,7 @@ public class User {
     }
     
      
-    protected  User(){  
+    public  User(){  
     }
 
     

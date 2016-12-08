@@ -9,6 +9,7 @@ import com.Model.UserConnect;
 import com.Repository.UserConnectRepository;
 import com.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,11 +26,6 @@ public class UserConnectServiceImpl implements UserConnectService{
     public Iterable<UserConnect> findAll() {
         return userConnectRepo.findAll();
     }
-
- /*   @Override
-    public String getEmail(Long iduser) {
-        return userRepo.getEmail(iduser);
-    } */
 
     @Override
     public UserConnect findOne(Long id) {
@@ -55,4 +51,15 @@ public class UserConnectServiceImpl implements UserConnectService{
     public void save(UserConnect u) {
         userConnectRepo.save(u);
     }
+
+    @Override
+    public String findPswByEmail(String email) {
+        return userConnectRepo.findPswByEmail(email);
+    }
+
+    @Override
+    public Long findIdByEmail(String email) {
+        return userConnectRepo.findIdByEmail(email);
+    }
+
 }
