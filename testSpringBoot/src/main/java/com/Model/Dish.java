@@ -20,7 +20,7 @@ public class Dish {
     private String name;
     
     @Column(name="dish_description")
-    private int description;
+    private String description;
     
     //@ManyToOne
     @JoinColumn(name = "t_goal_idt_goal", referencedColumnName ="idt_goal")
@@ -31,7 +31,7 @@ public class Dish {
         
     }
 
-    public Dish(String name, int description) {
+    public Dish(String name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -44,12 +44,16 @@ public class Dish {
         this.name = name;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getIdDish() {
+        return idDish;
     }
     
 }

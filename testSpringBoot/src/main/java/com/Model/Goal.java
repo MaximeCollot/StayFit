@@ -31,6 +31,10 @@ public class Goal {
         this.name = name;
         this.description = description;
     }
+    
+        public Object getIdGoal() {
+        return idGoal;
+    }
 
     public String getName() {
         return name;
@@ -47,6 +51,8 @@ public class Goal {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
     
     
     

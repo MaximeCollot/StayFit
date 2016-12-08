@@ -39,6 +39,10 @@ public class Practice {
         
     }
 
+    public int getIdPractice() {
+        return idPractice;
+    }
+
     public Practice(Date date, int isDone, int isRecommended) {
         this.date = date;
         this.isDone = isDone;

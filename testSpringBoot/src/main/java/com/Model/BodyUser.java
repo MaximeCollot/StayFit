@@ -22,6 +22,9 @@ public class BodyUser {
     @Column(name="bodyuser_islast")
     private int isLast;
     
+    @Column(name="bodyuser_gracemasse")
+    private int graceMasse;
+    
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="userId")
     private User user;
