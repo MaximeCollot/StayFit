@@ -26,11 +26,6 @@ public class UserServiceImpl implements UserService {
         return userRepo.findAll();
     }
 
- /*   @Override
-    public String getEmail(Long iduser) {
-        return userRepo.getEmail(iduser);
-    } */
-
     @Override
     public User findOne(Long id) {
         return userRepo.findOne(id);
