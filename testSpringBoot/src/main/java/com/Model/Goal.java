@@ -5,10 +5,13 @@
  */
 package com.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
+
 
 @Entity
 @Table(name="t_goal")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Goal {
     
     @Id

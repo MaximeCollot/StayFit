@@ -44,7 +44,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-    public HttpStatus createUser(@RequestParam(value = "name") String name, @RequestParam(value = "firstname") String firstname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") Sexe sexe, @RequestParam(value = "picture") String picture, HttpServletResponse response) throws ParseException {
+    public HttpStatus createUser(@RequestParam(value = "name") String name, @RequestParam(value = "firstname") String firstname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") Sexe sexe, @RequestParam(value = "picture") String picture) throws ParseException {
         User u = new User(name, firstname,birthday, sexe, picture);
         try {
             userService.save(u);
@@ -57,7 +57,7 @@ public class UserController {
     
        // @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.GET, value = "/user/find/{id}")
-     public User findUserByEmail(@PathVariable Long id) {
+     public User findUserById(@PathVariable Long id) {
          User user = new User();
        try {
             if (userConnectService.exists(id)) {

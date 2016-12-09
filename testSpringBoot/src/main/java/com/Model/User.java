@@ -1,5 +1,6 @@
 package com.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -7,7 +8,6 @@ import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import javax.print.attribute.standard.DateTimeAtCompleted;
 import org.joda.time.DateTime;
-
 
 @Entity
 @Table(name = "t_user")
@@ -33,7 +33,7 @@ public class User {
     private String creation_date;
     
      @Column(name="user_last_visit_date")
-    private Timestamp last_visit_date;
+    private String last_visit_date;
      
     @Column(name = "user_is_coach")
     private boolean is_coach;
@@ -46,6 +46,10 @@ public class User {
      
      @Column(name = "user_size")
      private int size;
+     
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_idgoal")
+    private Goal goal;
      
 
     public User(String name, String firstname, String birthday, Sexe sexe, String picture) throws ParseException {
@@ -112,11 +116,11 @@ public class User {
         this.creation_date = creation_date;
     }
 
-    public Timestamp getLast_visit_date() {
+    public String getLast_visit_date() {
         return last_visit_date;
     }
 
-    public void setLast_visit_date(Timestamp last_visit_date) {
+    public void setLast_visit_date(String last_visit_date) {
         this.last_visit_date = last_visit_date;
     }
 
@@ -151,6 +155,15 @@ public class User {
     public void setSize(int size) {
         this.size = size;
     }
+    
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+   
     
     public enum Sexe {
         MASCULIN, 
