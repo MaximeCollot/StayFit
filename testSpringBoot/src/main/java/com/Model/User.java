@@ -14,20 +14,20 @@ import org.joda.time.DateTime;
 public class User {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "iduser")
     private Long iduser;
     
     @Column(name="user_lastname")
-    private String name;
+    private String firstname;
     
     @Column(name="user_firstname")
-    private String firstname;
+    private String lastname;
     
     @Column(name="user_birthday")
     private String birthday;
 
     @Column(name="user_sexe")
-    private Sexe sexe;
+    private String sexe;
 
     @Column(name="user_creation_date")
     private String creation_date;
@@ -52,15 +52,16 @@ public class User {
     private Goal goal;
      
 
-    public User(String name, String firstname, String birthday, Sexe sexe, String picture) throws ParseException {
+    public User(Long id, String firstname, String lastname, String birthday, String sexe, int size) throws ParseException {
       
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        this.iduser = id;
         this.creation_date = simpleDateFormat.format(new Date());
-        this.name = name;
         this.firstname = firstname;
+        this.lastname = lastname;
         this.birthday = birthday;
         this.sexe = sexe;
-        this.picture = picture;
+        this.size = size;
     }
     
      
@@ -76,20 +77,20 @@ public class User {
         this.iduser = iduser;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstname() {
+    public String getFirstName() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
+    public void setName(String name) {
         this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getBirthday() {
@@ -100,11 +101,11 @@ public class User {
         this.birthday = birthday;
     }
 
-    public Sexe getSexe() {
+    public String getSexe() {
         return sexe;
     }
 
-    public void setSexe(Sexe sexe) {
+    public void setSexe(String sexe) {
         this.sexe = sexe;
     }
 
@@ -155,6 +156,7 @@ public class User {
     public void setSize(int size) {
         this.size = size;
     }
+<<<<<<< HEAD
     
     public Goal getGoal() {
         return goal;
@@ -169,4 +171,6 @@ public class User {
         MASCULIN, 
         FEMININ
     }
+=======
+>>>>>>> louisDev
 }
