@@ -6,7 +6,6 @@
 package com.Controller;
 
 import com.Model.User;
-import com.Model.User.Sexe;
 import com.Model.UserConnect;
 import com.service.UserConnectService;
 import com.service.UserService;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,15 +42,16 @@ public class UserController {
        return userService.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-    public HttpStatus createUser(@RequestParam(value = "name") String name, @RequestParam(value = "firstname") String firstname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") Sexe sexe, @RequestParam(value = "picture") String picture, HttpServletResponse response) throws ParseException {
-        User u = new User(name, firstname,birthday, sexe, picture);
+    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, HttpServletResponse response) throws ParseException {
+        User u = new User(id,firstname, lastname, birthday, sexe, size);
         try {
             userService.save(u);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return HttpStatus.METHOD_FAILURE;
+            return HttpStatus.NOT_ACCEPTABLE;
         }
         return HttpStatus.ACCEPTED;
     }
