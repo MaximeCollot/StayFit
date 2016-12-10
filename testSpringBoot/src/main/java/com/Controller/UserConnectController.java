@@ -61,10 +61,7 @@ public class UserConnectController {
     @ResponseBody
     public long createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
         UserConnect u = new UserConnect(email,psw);
-<<<<<<< HEAD
-=======
         System.out.println(u.getEmail());
->>>>>>> louisDev
         try {
             userConnectService.save(u);
         } catch (Exception e) {

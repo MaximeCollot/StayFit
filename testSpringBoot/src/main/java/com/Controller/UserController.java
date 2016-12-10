@@ -45,13 +45,8 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-<<<<<<< HEAD
-    public HttpStatus createUser(@RequestParam(value = "name") String name, @RequestParam(value = "firstname") String firstname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") Sexe sexe, @RequestParam(value = "picture") String picture) throws ParseException {
-        User u = new User(name, firstname,birthday, sexe, picture);
-=======
     public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, HttpServletResponse response) throws ParseException {
         User u = new User(id,firstname, lastname, birthday, sexe, size);
->>>>>>> louisDev
         try {
             userService.save(u);
         } catch (Exception e) {

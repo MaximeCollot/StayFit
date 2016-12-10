@@ -47,9 +47,11 @@ public class User {
      @Column(name = "user_size")
      private int size;
      
+     /*
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_idgoal")
     private Goal goal;
+    */
      
 
     public User(Long id, String firstname, String lastname, String birthday, String sexe, int size) throws ParseException {
@@ -156,8 +158,8 @@ public class User {
     public void setSize(int size) {
         this.size = size;
     }
-<<<<<<< HEAD
     
+    /*
     public Goal getGoal() {
         return goal;
     }
@@ -165,12 +167,5 @@ public class User {
     public void setGoal(Goal goal) {
         this.goal = goal;
     }
-   
-    
-    public enum Sexe {
-        MASCULIN, 
-        FEMININ
-    }
-=======
->>>>>>> louisDev
+*/
 }
