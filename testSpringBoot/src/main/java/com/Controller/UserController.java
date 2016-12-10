@@ -46,7 +46,9 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
     public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, HttpServletResponse response) throws ParseException {
-        User u = new User(id,firstname, lastname, birthday, sexe, size);
+        String[] birthdayArray = birthday.split("/");
+        String birthdaySimpleFormat = birthdayArray[2]+"-"+birthdayArray[1]+"-"+birthdayArray[0];
+        User u = new User(id,firstname, lastname, birthdaySimpleFormat, sexe, size);
         try {
             userService.save(u);
         } catch (Exception e) {
@@ -56,7 +58,7 @@ public class UserController {
         return HttpStatus.ACCEPTED;
     }
     
-       // @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.GET, value = "/user/find/{id}")
      public User findUserById(@PathVariable Long id) {
          User user = new User();
