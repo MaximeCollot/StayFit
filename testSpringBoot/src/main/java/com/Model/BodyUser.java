@@ -112,6 +112,15 @@ public class BodyUser {
     public void setIsLast(boolean isLast) {
         this.isLast = isLast;
     }
+    
+    
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
 
 
 }

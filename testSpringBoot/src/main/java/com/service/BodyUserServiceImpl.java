@@ -50,4 +50,17 @@ public class BodyUserServiceImpl implements BodyUserService {
     public void save(BodyUser u) {
         bodyUserRepo.save(u);
     }
+    
+    @Override
+    public void saveAndUpdate(BodyUser u) {
+        BodyUser bodyUserToUpdate = bodyUserRepo.findByIdUserAndIsLast(u.getIdUser());
+        bodyUserToUpdate.setIsLast(false);
+        bodyUserRepo.save(bodyUserToUpdate);
+        bodyUserRepo.save(u);
+    }
+
+    @Override
+    public Iterable<BodyUser> findBodyUserByUser(Long idUser) {
+        return bodyUserRepo.findBodyUserByUser(idUser);
+    }
 }

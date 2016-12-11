@@ -25,4 +25,9 @@ public interface BodyUserService {
         
         public void save(BodyUser u);
         
+        public void saveAndUpdate(BodyUser u);
+        
+        public Iterable<BodyUser> findBodyUserByUser(Long iduser);
+        
+        
 }
