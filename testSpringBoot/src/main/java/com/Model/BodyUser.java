@@ -24,26 +24,30 @@ public class BodyUser {
     private String recordDate;
     
     @Column(name="bodyuser_islast")
-    private int isLast;
+    private boolean isLast;
     
     @Column(name="bodyuser_gracemass")
     private int graceMasse;
-    
-    /*
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="userId")
-    private User user;  */
     
     public BodyUser(){
         
     }
 
-    public BodyUser(int weight,int gracemasse, int isLast, Long idUser) {
+    public BodyUser(int weight,int gracemasse, boolean isLast, Long idUser) {
         this.idUser = idUser;
         this.weight = weight;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.recordDate= simpleDateFormat.format(new Date());
         this.graceMasse = gracemasse;
+        this.isLast = isLast;
+    }
+    
+    public BodyUser(int weight, boolean isLast, Long idUser) {
+        this.idUser = idUser;
+        this.weight = weight;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        this.recordDate= simpleDateFormat.format(new Date());
+        this.graceMasse = 0;
         this.isLast = isLast;
     }
 
@@ -98,14 +102,14 @@ public class BodyUser {
     /**
      * @return the isLast
      */
-    public int getIsLast() {
+    public boolean getIsLast() {
         return isLast;
     }
 
     /**
      * @param isLast the isLast to set
      */
-    public void setIsLast(int isLast) {
+    public void setIsLast(boolean isLast) {
         this.isLast = isLast;
     }
 

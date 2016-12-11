@@ -5,8 +5,10 @@
  */
 package com.Controller;
 
+import com.Model.BodyUser;
 import com.Model.User;
 import com.Model.UserConnect;
+import com.service.BodyUserService;
 import com.service.UserConnectService;
 import com.service.UserService;
 import java.text.ParseException;
@@ -36,6 +38,9 @@ public class UserController {
     
     @Autowired
     private UserConnectService userConnectService;
+    
+    @Autowired
+    private BodyUserService bodyUserService;
    
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     Iterable<User> selectAll() throws Exception{
@@ -45,12 +50,16 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, HttpServletResponse response) throws ParseException {
+    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, @RequestParam(value = "weight") int weight, HttpServletResponse response) throws ParseException {
         String[] birthdayArray = birthday.split("/");
         String birthdaySimpleFormat = birthdayArray[2]+"-"+birthdayArray[1]+"-"+birthdayArray[0];
         User u = new User(id,firstname, lastname, birthdaySimpleFormat, sexe, size);
         try {
             userService.save(u);
+            if (weight != 0) {
+                BodyUser body = new BodyUser(weight, true, id);
+                bodyUserService.save(body);
+            }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
             return HttpStatus.NOT_ACCEPTABLE;
