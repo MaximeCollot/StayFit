@@ -17,4 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+    
+        @org.springframework.data.jpa.repository.Query("SELECT u.password FROM UserConnect u where u.email = :email") 
+        String findPswByEmail(@Param("email") String email);
 }

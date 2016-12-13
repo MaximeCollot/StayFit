@@ -59,11 +59,27 @@ public class UserController {
     }
     
     @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.POST, value = "/user/updategoal")
+    @ResponseBody
+    public HttpStatus updateIdGoalUser(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") Long idgoal) throws ParseException {
+        User u = userService.findOne(id);
+        u.setIdGoal(idgoal);
+        try {
+            userService.save(u);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return HttpStatus.NOT_ACCEPTABLE;
+        }
+        return HttpStatus.ACCEPTED;
+    }
+    
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.GET, value = "/user/find/{id}")
      public User findUserById(@PathVariable Long id) {
          User user = new User();
        try {
             if (userConnectService.exists(id)) {
+                System.err.println("USER EXIST");
                  user = userService.findOne(id);
             } else {
                   return null;

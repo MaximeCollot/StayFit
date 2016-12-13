@@ -71,17 +71,7 @@ public class UserConnectController {
         return  u.getIduser();
     }
     
-    /*
-   @CrossOrigin(origins = "http://localhost:8100")
-    @RequestMapping(method = RequestMethod.POST, value = "/userConnect/login")
-   public boolean loginUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
-        String testPsw = userConnectService.findPswByEmail(email); 
-        if(testPsw.equals(psw)){
-            return true;
-        }else{
-            return false;
-        }
-    } */
+    
     
    @CrossOrigin(origins = "http://localhost:8100")
    @RequestMapping(method = RequestMethod.DELETE, value = "/userConnect/delete/{id}")
@@ -94,7 +84,7 @@ public class UserConnectController {
                 }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            //return e.getMessage();
+                return HttpStatus.NOT_ACCEPTABLE;       
         }
      return HttpStatus.ACCEPTED;                
     }

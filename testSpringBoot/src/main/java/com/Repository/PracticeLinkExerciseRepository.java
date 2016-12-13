@@ -11,12 +11,9 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author florian
+ * @author louis
  */
-/*
 @Repository
 public interface PracticeLinkExerciseRepository extends CrudRepository<PracticeLinkExercise, Long>{
     
-    
-} */
-
+}

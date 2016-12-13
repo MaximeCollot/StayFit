@@ -11,13 +11,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="t_goal")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Goal {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idt_goal", nullable = false)
-    private int idGoal;
+    private Long idGoal;
     
     @Column(name="goal_name")
     private String name;
@@ -35,7 +34,7 @@ public class Goal {
         this.description = description;
     }
     
-        public Object getIdGoal() {
+    public Long getIdGoal() {
         return idGoal;
     }
 

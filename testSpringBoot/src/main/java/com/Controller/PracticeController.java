@@ -37,7 +37,7 @@ public class PracticeController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/practice/create")
     @ResponseBody
-    public HttpStatus createPractice(@RequestParam(value = "date") Date date, @RequestParam(value = "isDone") int isDone,@RequestParam(value = "isRecommended") int isRecommended ) {
+    public HttpStatus createPractice(@RequestParam(value = "date") String date, @RequestParam(value = "isDone") int isDone,@RequestParam(value = "isRecommended") int isRecommended ) {
         Practice p = new Practice(date,isDone,isRecommended);
         try {
             practiceService.save(p);

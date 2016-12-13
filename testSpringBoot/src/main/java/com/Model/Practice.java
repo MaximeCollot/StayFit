@@ -18,20 +18,18 @@ public class Practice {
     private int idPractice;
     
     @Column(name="practice_date")
-    private Date date;
+    private String date;
     
     @Column(name="practice_isdone")
     private int isDone;
     
-    //@ManyToOne
-    @JoinColumn(name = "t_goal_idt_goal", referencedColumnName ="idt_goal")
+    @Column(name = "t_goal_idt_goal")
     private int idGoal;
     
     @Column(name="practice_is_recommended")
     private int isRecommended;
     
-    //@ManyToOne
-    @JoinColumn(name = "t_user_iduser", referencedColumnName ="iduser")
+    
     private int idUser;
     
     
@@ -43,17 +41,17 @@ public class Practice {
         return idPractice;
     }
 
-    public Practice(Date date, int isDone, int isRecommended) {
+    public Practice(String date, int isDone, int isRecommended) {
         this.date = date;
         this.isDone = isDone;
         this.isRecommended = isRecommended;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

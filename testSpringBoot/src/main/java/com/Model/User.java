@@ -1,13 +1,9 @@
 package com.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import org.joda.time.DateTime;
 
 @Entity
 @Table(name = "t_user")
@@ -18,10 +14,10 @@ public class User {
     private Long iduser;
     
     @Column(name="user_lastname")
-    private String firstname;
+    private String lastname;
     
     @Column(name="user_firstname")
-    private String lastname;
+    private String firstname;
     
     @Column(name="user_birthday")
     private String birthday;
@@ -47,11 +43,15 @@ public class User {
      @Column(name = "user_size")
      private int size;
      
-     /*
+     @Column(name = "user_idgoal")
+     private Long idGoal;
+
+    /*
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_idgoal")
     private Goal goal;
-    */
+*/
+   
      
 
     public User(Long id, String firstname, String lastname, String birthday, String sexe, int size) throws ParseException {
@@ -158,14 +158,12 @@ public class User {
     public void setSize(int size) {
         this.size = size;
     }
-    
-    /*
-    public Goal getGoal() {
-        return goal;
-    }
 
-    public void setGoal(Goal goal) {
-        this.goal = goal;
+    public Long getIdGoal() {
+        return idGoal;
     }
-*/
+    
+    public void setIdGoal(Long idGoal) {
+        this.idGoal = idGoal;
+    }
 }

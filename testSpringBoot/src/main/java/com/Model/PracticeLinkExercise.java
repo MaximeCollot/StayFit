@@ -7,11 +7,14 @@ package com.Model;
 
 import javax.persistence.*;
 
-@Embeddable //  /!\ A verifier !!!
+@Entity //  /!\ A verifier !!!
 @Table(name="t_practicelinkexercise")
 public class PracticeLinkExercise {
-   
-   // /!\ Pas d'ID !!!!
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_link_practice")
+    private int id;    
+           
     @Column(name="exercice_repetition")
     private int repetiton;
     
@@ -21,15 +24,14 @@ public class PracticeLinkExercise {
     @Column(name="exercice_duration")
     private int duration;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "t_practice_idt_practice", referencedColumnName ="idt_practice")
-    // /!\ idT_Diner à modifier dans BDD !!!
-    private int idPractice;
+    private Practice practice;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "t_exercise_idt_exercise", referencedColumnName ="idt_exercice")
-    private int idExercise;
-    
+    private Exercise exercise;
+
     public PracticeLinkExercise(){
         
     }
@@ -39,8 +41,6 @@ public class PracticeLinkExercise {
         this.set = set;
         this.duration = duration;
     }
-    
-    
 
     public int getRepetiton() {
         return repetiton;
@@ -66,6 +66,27 @@ public class PracticeLinkExercise {
         this.duration = duration;
     }
     
+       public Practice getPractice() {
+        return practice;
+    }
+
+    public void setPractice(Practice practice) {
+        this.practice = practice;
+    }
+
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
+    }
     
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
