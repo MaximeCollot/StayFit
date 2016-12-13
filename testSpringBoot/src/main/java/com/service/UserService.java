@@ -6,7 +6,6 @@
 package com.service;
 
 import com.Model.User;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -26,5 +25,4 @@ public interface UserService {
         
         public void save(User u);
         
-      //  public String getEmail(Long iduser);
 }

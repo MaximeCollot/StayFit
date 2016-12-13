@@ -5,20 +5,18 @@
  */
 package com.Controller;
 
+import com.Model.BodyUser;
 import com.Model.User;
-import com.Model.User.Sexe;
 import com.Model.UserConnect;
+import com.service.BodyUserService;
+import com.service.UserConnectService;
 import com.service.UserService;
 import java.text.ParseException;
-import java.util.List;
 import javax.servlet.http.HttpServletResponse;
-import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
-import static org.hibernate.internal.CoreLogging.logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import static org.springframework.http.converter.json.Jackson2ObjectMapperBuilder.json;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -38,33 +35,63 @@ public class UserController {
     
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private UserConnectService userConnectService;
+    
+    @Autowired
+    private BodyUserService bodyUserService;
    
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     Iterable<User> selectAll() throws Exception{
        return userService.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-    public HttpStatus createUserConnect(@RequestParam(value = "name") String name, @RequestParam(value = "firstname") String firstname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") Sexe sexe, @RequestParam(value = "picture") String picture, HttpServletResponse response) throws ParseException {
-        User u = new User(name, firstname,birthday, sexe, picture);
+    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, @RequestParam(value = "weight") int weight, HttpServletResponse response) throws ParseException {
+        String[] birthdayArray = birthday.split("/");
+        String birthdaySimpleFormat = birthdayArray[2]+"-"+birthdayArray[1]+"-"+birthdayArray[0];
+        User u = new User(id,firstname, lastname, birthdaySimpleFormat, sexe, size);
         try {
             userService.save(u);
+            if (weight != 0) {
+                BodyUser body = new BodyUser(weight, true, id);
+                bodyUserService.save(body);
+            }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return HttpStatus.METHOD_FAILURE;
+            return HttpStatus.NOT_ACCEPTABLE;
         }
         return HttpStatus.ACCEPTED;
     }
     
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.GET, value = "/user/find/{id}")
+     public User findUserById(@PathVariable Long id) {
+         User user = new User();
+       try {
+            if (userConnectService.exists(id)) {
+                 user = userService.findOne(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return null;
+        }
+        return user; 
+     }
+    
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/user/delete/{id}")
-    public HttpStatus DeleteUserConnect(@PathVariable Long id) {
+    public HttpStatus DeleteUser(@PathVariable Long id) {
         try {
-            if (userService.exists(id)) {
+              if (userService.exists(id)) {
                  userService.delete(id);
-            } else {
-                return HttpStatus.METHOD_FAILURE;
+             } else {
+                 return HttpStatus.METHOD_FAILURE;
             }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());

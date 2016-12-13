@@ -6,7 +6,9 @@
 package com.Repository;
 
 import com.Model.UserConnect;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +17,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserConnectRepository extends CrudRepository<UserConnect,Long> {
-    
+ 
+        @Query("SELECT u.password FROM UserConnect u where u.email = :email") 
+        String findPswByEmail(@Param("email") String email);
+        
+        @Query("SELECT u.iduser FROM UserConnect u where u.email = :email") 
+        Long findIdByEmail(@Param("email") String email);
 }

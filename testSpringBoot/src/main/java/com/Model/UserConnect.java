@@ -21,12 +21,11 @@ import javax.persistence.Table;
 @Table(name = "t_userconnect")
 public class UserConnect {
     
-    
+    @Id
     @Column(name = "t_user_iduser")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long user_iduser;
+    private Long iduser;
     
-    @Id
     @Column(name = "user_mail")
     private String email;
     
@@ -42,7 +41,7 @@ public class UserConnect {
     }
     
     public Long getIduser() {
-        return user_iduser;
+        return iduser;
     }
 
     public String getEmail() {
@@ -50,7 +49,7 @@ public class UserConnect {
     }
 
     public void setIdUser(Long id) {
-        this.user_iduser = id;
+        this.iduser = id;
     }
     public void setEmail(String email) {
         this.email = email;

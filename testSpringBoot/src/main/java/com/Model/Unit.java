@@ -36,6 +36,10 @@ public class Unit {
     public String getUnit() {
         return unit;
     }
+    
+    public int getIdUnit() {
+        return idUnit;
+    }
 
     public void setUnit(String unit) {
         this.unit = unit;

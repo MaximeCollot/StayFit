@@ -28,17 +28,25 @@ public class UserConnectController {
     @Autowired
     private UserConnectService userConnectService;
     
+     @CrossOrigin(origins = "http://localhost:8100")
      @RequestMapping(value = "/userConnect", method = RequestMethod.GET)
     Iterable<UserConnect> selectAll() throws Exception{
        return userConnectService.findAll();
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "/userConnect/find/{id}")
-     public UserConnect findUserConnect(@PathVariable Long id) {
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.POST, value = "/userConnect/login")
+     public Long findUserConnectByEmail(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
+         Long idUser = userConnectService.findIdByEmail(email);
          UserConnect user = new UserConnect();
        try {
-            if (userConnectService.exists(id)) {
-                 user = userConnectService.findOne(id);
+            if (userConnectService.exists(idUser)) {
+                 user = userConnectService.findOne(idUser);
+                 if (user.getPassword().equals(psw)){
+                     return user.getIduser();
+                 }else{
+                     return null;
+                 }
             } else {
                   return null;
             }
@@ -46,33 +54,44 @@ public class UserConnectController {
             System.err.println(e.getStackTrace());
             return null;
         }
-        return user; 
      }
     
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/create")
     @ResponseBody
-    public HttpStatus createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
+    public long createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
         UserConnect u = new UserConnect(email,psw);
-        u.setIdUser(new Long(4));   
+        System.out.println(u.getEmail());
         try {
             userConnectService.save(u);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return HttpStatus.NOT_ACCEPTABLE;
+            return 0;
         }
-        return  HttpStatus.ACCEPTED;
+        return  u.getIduser();
     }
     
-    //@ResponseBody
+    /*
+   @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.POST, value = "/userConnect/login")
+   public boolean loginUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
+        String testPsw = userConnectService.findPswByEmail(email); 
+        if(testPsw.equals(psw)){
+            return true;
+        }else{
+            return false;
+        }
+    } */
+    
+   @CrossOrigin(origins = "http://localhost:8100")
    @RequestMapping(method = RequestMethod.DELETE, value = "/userConnect/delete/{id}")
-    public HttpStatus DeleteUserConnect(@PathVariable Long id) {
+    public HttpStatus deleteUserConnect(@PathVariable Long id) {
         try {
-            if (userConnectService.exists(id)) {
-                 userConnectService.delete(id);
-            } else {
+                if (userConnectService.exists(id)) {
+                    userConnectService.delete(id);
+                } else {
                   return HttpStatus.NOT_ACCEPTABLE;
-            }
+                }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
             //return e.getMessage();
