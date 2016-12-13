@@ -1,0 +1,17 @@
+com/Model/BodyUser.class
+com/Model/Food.class
+com/Model/Dish.class
+com/Repository/GoalRepository.class
+com/Repository/PracticeRepository.class
+com/Model/MealLinkDish.class
+com/Model/PracticeLinkExercise.class
+com/Model/Goal.class
+com/Model/UserConnect.class
+com/Repository/DishRepository.class
+com/Repository/UnitRepository.class
+com/Repository/FoodRepository.class
+com/Main.class
+com/Repository/BodyUserRepository.class
+com/Model/Unit.class
+com/Model/Practice.class
+com/Model/DishLinkFood.class
