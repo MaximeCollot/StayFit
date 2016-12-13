@@ -63,4 +63,11 @@ public class BodyUserServiceImpl implements BodyUserService {
     public Iterable<BodyUser> findBodyUserByUser(Long idUser) {
         return bodyUserRepo.findBodyUserByUser(idUser);
     }
+
+    @Override
+    public BodyUser findByIdUserAndIsLast(Long iduser) {
+        return bodyUserRepo.findByIdUserAndIsLast(iduser);
+    }
+    
+    
 }

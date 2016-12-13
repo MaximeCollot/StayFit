@@ -58,7 +58,7 @@ public class BodyUserController {
         return HttpStatus.ACCEPTED;
     }
     
-    //@CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/bodyUser/insert")
     @ResponseBody
     public HttpStatus insertUser(@RequestParam(value = "idUser") Long id, @RequestParam(value = "weight") int weight, @RequestParam(value = "gracemass") int gracemass,HttpServletResponse response) throws ParseException {
@@ -72,7 +72,7 @@ public class BodyUserController {
         return HttpStatus.ACCEPTED;
     }
     
-    //@CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.GET, value = "/bodyUser/find/{id}")
      public Iterable<BodyUser> findBodyUserById(@PathVariable Long id) {
         return bodyUserService.findBodyUserByUser(id);
@@ -90,7 +90,27 @@ public class BodyUserController {
         }
         return bodyUsers; 
 */
-     }
+    }
+     
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.GET, value = "/bodyUser/findLast/{id}")
+     public BodyUser findByIdUserAndIsLast(@PathVariable Long id) {
+        return bodyUserService.findByIdUserAndIsLast(id);
+       /*
+       Iterable<BodyUser> bodyUsers = new Iterable<BodyUser>();
+       try {
+            if (userConnectService.exists(id)) {
+                 return bodyUserService.findBodyUserByUser(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return null;
+        }
+        return bodyUsers; 
+*/
+    }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/bodyUser/delete/{id}")

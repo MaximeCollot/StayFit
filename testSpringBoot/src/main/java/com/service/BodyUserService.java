@@ -29,5 +29,7 @@ public interface BodyUserService {
         
         public Iterable<BodyUser> findBodyUserByUser(Long iduser);
         
+        public BodyUser findByIdUserAndIsLast (Long iduser);
+        
         
 }
