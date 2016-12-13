@@ -10,6 +10,7 @@ import com.service.PracticeService;
 import java.util.Date;
 import static org.joda.time.format.ISODateTimeFormat.date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,32 +37,31 @@ public class PracticeController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/practice/create")
     @ResponseBody
-    public String createPractice(@RequestParam(value = "date") Date date, @RequestParam(value = "isDone") int isDone,@RequestParam(value = "isRecommended") int isRecommended ) {
+    public HttpStatus createPractice(@RequestParam(value = "date") Date date, @RequestParam(value = "isDone") int isDone,@RequestParam(value = "isRecommended") int isRecommended ) {
         Practice p = new Practice(date,isDone,isRecommended);
         try {
             practiceService.save(p);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;        
         }
-        return "creation successful: " + String.valueOf(p.getIdPractice());
+        return HttpStatus.ACCEPTED;
     }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/practice/delete/{id}")
-    public String DeletePractice(@PathVariable Long id) {
+    public HttpStatus DeletePractice(@PathVariable Long id) {
         try {
             if (practiceService.exists(id)) {
                  practiceService.delete(id);
             } else {
-                return "Erreur : Practice inconnu";
+                return HttpStatus.NOT_ACCEPTABLE;        
             }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;        
         }
-        return "Deletion successful: " ;
-                
+        return HttpStatus.ACCEPTED;               
     }
     
     

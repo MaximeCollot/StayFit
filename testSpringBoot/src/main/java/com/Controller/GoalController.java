@@ -8,6 +8,7 @@ package com.Controller;
 import com.Model.Goal;
 import com.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,32 +35,31 @@ public class GoalController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/goal/create")
     @ResponseBody
-    public String createGoal(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
+    public HttpStatus createGoal(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
         Goal g = new Goal(name,description);
         try {
             goalService.save(g);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;
         }
-        return "creation successful: " + String.valueOf(g.getIdGoal());
+        return HttpStatus.ACCEPTED;
     }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/goal/delete/{id}")
-    public String DeleteGoal(@PathVariable Long id) {
+    public HttpStatus DeleteGoal(@PathVariable Long id) {
         try {
             if (goalService.exists(id)) {
                  goalService.delete(id);
             } else {
-                return "Erreur : Goal inconnu";
+                return HttpStatus.NOT_ACCEPTABLE;
             }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;
         }
-        return "Deletion successful: " ;
-                
+        return HttpStatus.ACCEPTED;                
     }
     
     

@@ -8,6 +8,7 @@ package com.Controller;
 import com.Model.Unit;
 import com.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,32 +35,31 @@ public class UnitController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/unit/create")
     @ResponseBody
-    public String createUnit(@RequestParam(value = "unit") String unit, @RequestParam(value = "description") String description) {
+    public HttpStatus createUnit(@RequestParam(value = "unit") String unit, @RequestParam(value = "description") String description) {
         Unit u = new Unit(unit,description);
         try {
            unitService.save(u);
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;        
         }
-        return "creation successful: " + String.valueOf(u.getIdUnit());
-    }
+        return HttpStatus.ACCEPTED;
+  }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/unit/delete/{id}")
-    public String DeleteUnit(@PathVariable Long id) {
+    public HttpStatus DeleteUnit(@PathVariable Long id) {
         try {
             if (unitService.exists(id)) {
                  unitService.delete(id);
             } else {
-                return "Erreur : Utilisateur inconnu";
+                return HttpStatus.NOT_ACCEPTABLE;        
             }
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
-            return e.getMessage();
+            return HttpStatus.NOT_ACCEPTABLE;        
         }
-        return "Deletion successful: " ;
-                
+        return HttpStatus.ACCEPTED;                
     }
     
     
