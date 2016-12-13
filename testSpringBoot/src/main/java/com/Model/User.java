@@ -1,7 +1,9 @@
 package com.Model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import javax.print.attribute.standard.DateTimeAtCompleted;
 import org.joda.time.DateTime;
@@ -22,13 +24,13 @@ public class User {
     private String firstname;
     
     @Column(name="user_birthday")
-    private Timestamp birthday;
-    
+    private String birthday;
+
     @Column(name="user_sexe")
-    private int sexe;
+    private Sexe sexe;
 
     @Column(name="user_creation_date")
-    private Timestamp creation_date;
+    private String creation_date;
     
      @Column(name="user_last_visit_date")
     private Timestamp last_visit_date;
@@ -46,6 +48,18 @@ public class User {
      private int size;
      
 
+    public User(String name, String firstname, String birthday, Sexe sexe, String picture) throws ParseException {
+      
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        this.creation_date = simpleDateFormat.format(new Date());
+        this.name = name;
+        this.firstname = firstname;
+        this.birthday = birthday;
+        this.sexe = sexe;
+        this.picture = picture;
+    }
+    
+     
     protected  User(){  
     }
 
@@ -74,27 +88,27 @@ public class User {
         this.firstname = firstname;
     }
 
-    public Timestamp getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Timestamp birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public int getSexe() {
+    public Sexe getSexe() {
         return sexe;
     }
 
-    public void setSexe(int sexe) {
+    public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
 
-    public Timestamp getCreation_date() {
+    public String getCreation_date() {
         return creation_date;
     }
 
-    public void setCreation_date(Timestamp creation_date) {
+    public void setCreation_date(String creation_date) {
         this.creation_date = creation_date;
     }
 
@@ -138,5 +152,8 @@ public class User {
         this.size = size;
     }
     
-    
+    public enum Sexe {
+        MASCULIN, 
+        FEMININ
+    }
 }

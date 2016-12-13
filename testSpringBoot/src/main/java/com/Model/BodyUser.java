@@ -16,18 +16,18 @@ public class BodyUser {
     @Column(name="bodyuser_weight")
     private String weight;
     
-    @Column(name="bodyuser_gracemasse")
-    private int graceMasse;
-    
     @Column(name="bodyuser_recorde_date")
     private Date recordDate;
     
     @Column(name="bodyuser_islast")
     private int isLast;
     
-    /*@ManyToOne //idUSer à verifier
-    @JoinColumn(name = "t_user_iduser")
-    private int idUser*/
+    @Column(name="bodyuser_gracemasse")
+    private int graceMasse;
+    
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="userId")
+    private User user;
     
     protected  BodyUser(){
         
@@ -55,19 +55,7 @@ public class BodyUser {
         this.weight = weight;
     }
 
-    /**
-     * @return the graceMasse
-     */
-    public int getGraceMasse() {
-        return graceMasse;
-    }
-
-    /**
-     * @param graceMasse the graceMasse to set
-     */
-    public void setGraceMasse(int graceMasse) {
-        this.graceMasse = graceMasse;
-    }
+   
 
     /**
      * @return the recordDate

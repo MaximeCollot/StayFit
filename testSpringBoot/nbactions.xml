@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
         <action>
+<<<<<<< HEAD
             <actionName>CUSTOM-spring-boot:run</actionName>
             <displayName>spring-boot:run</displayName>
+=======
+            <actionName>CUSTOM-springboot run</actionName>
+            <displayName>springboot run</displayName>
+>>>>>>> 00e6c471a4154bf42bac736521d9ad5d2f4e396f
             <goals>
                 <goal>spring-boot:run</goal>
             </goals>

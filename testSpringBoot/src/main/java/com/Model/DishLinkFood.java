@@ -10,9 +10,12 @@ import javax.persistence.*;
 //@Entity
 @Embeddable //  /!\ A verifier !!!
 @Table(name="t_dishlinkfood")
-
 public class DishLinkFood {
-   
+    
+    
+    @Column(name="idt_dishlinkfood")
+    private Long idt_dishlinkfood;
+    
    // /!\ Pas d'ID !!!!
     @Column(name="food_quantity")
     private int foodQuantity;
