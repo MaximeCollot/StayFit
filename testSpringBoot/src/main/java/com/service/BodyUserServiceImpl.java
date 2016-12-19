@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
  *
  * @author louis
  */
-
 @Service
 public class BodyUserServiceImpl implements BodyUserService {
     
@@ -29,26 +28,26 @@ public class BodyUserServiceImpl implements BodyUserService {
     @Override
     public BodyUser findOne(Long id) {
         return bodyUserRepo.findOne(id);
-    }
+     }
 
     @Override
     public boolean exists(Long id) {
-        return bodyUserRepo.exists(id);
+       return bodyUserRepo.exists(id);
     }
 
     @Override
     public void delete(Long id) {
-        bodyUserRepo.delete(id);
+       bodyUserRepo.delete(id);
     }
 
     @Override
-    public void delete(BodyUser u) {
-         bodyUserRepo.delete(u);
+    public void delete(BodyUser bu) {
+        bodyUserRepo.delete(bu);
     }
 
     @Override
-    public void save(BodyUser u) {
-        bodyUserRepo.save(u);
+    public void save(BodyUser bu) {
+        bodyUserRepo.save(bu);
     }
     
     @Override
@@ -68,6 +67,5 @@ public class BodyUserServiceImpl implements BodyUserService {
     public BodyUser findByIdUserAndIsLast(Long iduser) {
         return bodyUserRepo.findByIdUserAndIsLast(iduser);
     }
-    
-    
+        
 }

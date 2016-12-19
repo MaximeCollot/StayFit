@@ -49,4 +49,10 @@ public class PracticeServiceImpl implements PracticeService{
     public void save(Practice p) {
         practiceRepo.save(p);
     }
+
+    @Override
+    public Iterable<Practice> findPracticeByGoal(Long idGoal) {
+        return practiceRepo.findPracticeByGoal(idGoal);
+    }
+
 }

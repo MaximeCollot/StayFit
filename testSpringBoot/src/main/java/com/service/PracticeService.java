@@ -6,12 +6,15 @@
 package com.service;
 
 import com.Model.Practice;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author Florian
  */
 public interface PracticeService {
+    
+    public Iterable<Practice> findPracticeByGoal(@Param("idGoal") Long idGoal);
     
         public  Iterable<Practice> findAll();
         

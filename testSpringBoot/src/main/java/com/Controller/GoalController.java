@@ -33,6 +33,23 @@ public class GoalController {
        return goalService.findAll();
     }
     
+    //@CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.GET, value = "/goal/find/{id}")
+     public Goal findGoalById(@PathVariable Long id) {
+         Goal g = new Goal();
+       try {
+            if (goalService.exists(id)) {
+                 g = goalService.findOne(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+        return g; 
+     }
+    
     
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/goal/create")
