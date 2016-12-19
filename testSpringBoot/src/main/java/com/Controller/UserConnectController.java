@@ -56,7 +56,7 @@ public class UserConnectController {
         }
      }
     
-    @CrossOrigin(origins = "http://localhost:8100")
+   // @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/create")
     @ResponseBody
     public long createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {

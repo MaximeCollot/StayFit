@@ -36,10 +36,8 @@ public class GoalController {
     @RequestMapping(method = RequestMethod.GET, value = "/goal/find/{id}")
      public Goal findGoalById(@PathVariable Long id) {
          Goal g = new Goal();
-         System.err.println("ID GOOOOAL" + id);
        try {
             if (goalService.exists(id)) {
-                System.err.println("GOOOAAAAL EXISSSSSSTTT");
                  g = goalService.findOne(id);
             } else {
                   return null;

@@ -45,7 +45,7 @@ public class Exercise {
     private String pictureExercise;
     
 
-    protected Exercise(){
+    public Exercise(){
         
     }
 

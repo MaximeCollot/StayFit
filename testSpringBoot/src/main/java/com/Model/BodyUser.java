@@ -29,11 +29,6 @@ public class BodyUser {
     @Column(name="bodyuser_gracemass")
     private int graceMasse;
     
-    /*
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="userId")
-    private User user;  */
-    
     public BodyUser(){
         
     }

@@ -7,6 +7,7 @@ package com.service;
 
 import com.Model.PracticeLinkExercise;
 import com.Repository.PracticeLinkExerciseRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,11 @@ public class PracticeLinkExerciseServiceImpl implements PracticeLinkExerciseServ
     @Override
     public void save(PracticeLinkExercise bu) {
         practExerRepo.save(bu);
+    }
+
+    @Override
+    public List<Long> findExerciseByPractice(Long idPractice) {
+        return practExerRepo.findExerciseByPractice(idPractice);
     }
     
 }

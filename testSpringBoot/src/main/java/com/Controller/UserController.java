@@ -79,7 +79,6 @@ public class UserController {
          User user = new User();
        try {
             if (userConnectService.exists(id)) {
-                System.err.println("USER EXIST");
                  user = userService.findOne(id);
             } else {
                   return null;

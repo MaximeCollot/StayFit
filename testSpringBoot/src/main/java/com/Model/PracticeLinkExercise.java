@@ -7,39 +7,40 @@ package com.Model;
 
 import javax.persistence.*;
 
-@Entity //  /!\ A verifier !!!
+@Entity
 @Table(name="t_practicelinkexercise")
 public class PracticeLinkExercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_link_practice")
+    @Column(name="t_practicelinkexercise")
     private int id;    
            
-    @Column(name="exercice_repetition")
+    @Column(name="exercise_repetition")
     private int repetiton;
     
-    @Column(name="exercice_set")
+    @Column(name="exercise_set")
     private int set;
     
-    @Column(name="exercice_duration")
+    @Column(name="exercise_duration")
     private int duration;
     
-    @OneToOne
-    @JoinColumn(name = "t_practice_idt_practice", referencedColumnName ="idt_practice")
-    private Practice practice;
+    @Column(name="t_practice_idt_practice")
+    private Long idPractice;
     
-    @OneToOne
-    @JoinColumn(name = "t_exercise_idt_exercise", referencedColumnName ="idt_exercice")
-    private Exercise exercise;
+    @Column(name="t_exercise_idt_exercise")
+    private Long idExercise;
+    
 
     public PracticeLinkExercise(){
         
     }
 
-    public PracticeLinkExercise(int repetiton, int set, int duration) {
+    public PracticeLinkExercise(int repetiton, int set, int duration,Long idPractice, Long idExercise) {
         this.repetiton = repetiton;
         this.set = set;
         this.duration = duration;
+        this.idExercise = idExercise;
+        this.idPractice = idPractice;
     }
 
     public int getRepetiton() {
@@ -66,27 +67,24 @@ public class PracticeLinkExercise {
         this.duration = duration;
     }
     
-       public Practice getPractice() {
-        return practice;
-    }
-
-    public void setPractice(Practice practice) {
-        this.practice = practice;
-    }
-
-    public Exercise getExercise() {
-        return exercise;
-    }
-
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
-    }
-    
     public int getId() {
         return id;
+    }    
+
+    public Long getIdPractice() {
+        return idPractice;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPractice(Long idPractice) {
+        this.idPractice = idPractice;
     }
+
+    public Long getIdExercise() {
+        return idExercise;
+    }
+
+    public void setIdExercise(Long idExercise) {
+        this.idExercise = idExercise;
+    }
+    
 }

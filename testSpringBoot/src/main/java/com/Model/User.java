@@ -46,14 +46,6 @@ public class User {
      @Column(name = "user_idgoal")
      private Long idGoal;
 
-    /*
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_idgoal")
-    private Goal goal;
-*/
-   
-     
-
     public User(Long id, String firstname, String lastname, String birthday, String sexe, int size) throws ParseException {
       
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,7 +75,7 @@ public class User {
         return firstname;
     }
 
-    public void setName(String name) {
+    public void setFirstName(String firstname) {
         this.firstname = firstname;
     }
 

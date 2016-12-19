@@ -33,6 +33,8 @@ public class ExerciseController {
     
     
     
+    
+    
     @RequestMapping(method = RequestMethod.POST, value = "/exercise/create")
     @ResponseBody
     public HttpStatus createPractice(@RequestParam(value = "nameExercise")  String nameExercise, @RequestParam(value = "descriptionExercise") String descriptionExercise,@RequestParam(value = "legExercise") int legExercise, @RequestParam(value = "legDifficultyExercice") int legDifficultyExercice, @RequestParam(value = "armExercise")int armExercise,@RequestParam(value = "difficultyArmExercise")  int difficultyArmExercise,@RequestParam(value = "cheastExercise")  int cheastExercise, @RequestParam(value = "difficultyCheastExercise") int difficultyCheastExercise, @RequestParam(value = "pictureExercise") String pictureExercise  ) {

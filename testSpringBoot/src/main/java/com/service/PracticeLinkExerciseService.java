@@ -6,6 +6,8 @@
 package com.service;
 
 import com.Model.PracticeLinkExercise;
+import java.util.List;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -13,7 +15,9 @@ import com.Model.PracticeLinkExercise;
  */
 public interface PracticeLinkExerciseService {
     
-         public  Iterable<PracticeLinkExercise> findAll();
+        public List<Long> findExerciseByPractice(@Param("idPractice") Long idPractice);
+
+        public  Iterable<PracticeLinkExercise> findAll();
         
         public PracticeLinkExercise findOne(Long id);
         
