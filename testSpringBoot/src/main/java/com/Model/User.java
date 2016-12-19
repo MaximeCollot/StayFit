@@ -18,10 +18,10 @@ public class User {
     private Long iduser;
     
     @Column(name="user_lastname")
-    private String firstname;
+    private String lastname;
     
     @Column(name="user_firstname")
-    private String lastname;
+    private String firstname;
     
     @Column(name="user_birthday")
     private String birthday;
@@ -46,6 +46,9 @@ public class User {
      
      @Column(name = "user_size")
      private int size;
+     
+     @Column(name = "user_idgoal")
+     private int idgoal;
      
      /*
     @OneToOne(fetch=FetchType.LAZY)
@@ -84,7 +87,7 @@ public class User {
         return firstname;
     }
 
-    public void setName(String name) {
+    public void setFirstName(String firstname) {
         this.firstname = firstname;
     }
 
@@ -160,13 +163,11 @@ public class User {
         this.size = size;
     }
     
-    /*
-    public Goal getGoal() {
-        return goal;
+    public int getGoal() {
+        return idgoal;
     }
 
-    public void setGoal(Goal goal) {
-        this.goal = goal;
+    public void setGoal(int idgoal) {
+        this.idgoal = idgoal;
     }
-*/
 }

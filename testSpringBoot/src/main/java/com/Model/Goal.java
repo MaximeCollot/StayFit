@@ -25,6 +25,8 @@ public class Goal {
     @Column(name="goal_description")
     private String description;
     
+    @Column(name="goal_image")
+    private String image;    
     
     public Goal(){
         
@@ -55,8 +57,13 @@ public class Goal {
         this.description = description;
     }
 
+    public String getImage() {
+        return image;
+    }
 
-    
+    public void setImage(String image) {
+        this.image = image;
+    }
     
     
 }

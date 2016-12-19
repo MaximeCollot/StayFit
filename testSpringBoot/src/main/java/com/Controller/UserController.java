@@ -83,6 +83,21 @@ public class UserController {
         }
         return user; 
      }
+     
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.POST, value = "/user/setgoal")
+    @ResponseBody
+    public HttpStatus setGoal(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") int idgoal, HttpServletResponse response) throws ParseException {
+        User u = userService.findOne(id);
+        try {
+            u.setGoal(idgoal);
+            userService.save(u);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return HttpStatus.NOT_ACCEPTABLE;
+        }
+        return HttpStatus.ACCEPTED;
+    }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/user/delete/{id}")
