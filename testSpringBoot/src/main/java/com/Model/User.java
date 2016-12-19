@@ -51,6 +51,7 @@ public class User {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.iduser = id;
         this.creation_date = simpleDateFormat.format(new Date());
+        this.last_visit_date = simpleDateFormat.format(new Date());
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthday = birthday;

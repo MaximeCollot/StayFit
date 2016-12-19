@@ -24,8 +24,8 @@ public class BodyUser {
     private String recordDate;
     
     @Column(name="bodyuser_islast")
-    private int isLast;
-    
+    private boolean isLast;
+
     @Column(name="bodyuser_gracemass")
     private int graceMasse;
     
@@ -33,12 +33,21 @@ public class BodyUser {
         
     }
 
-    public BodyUser(int weight,int gracemasse, int isLast, Long idUser) {
+    public BodyUser(int weight,int gracemasse, boolean isLast, Long idUser) {
         this.idUser = idUser;
         this.weight = weight;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.recordDate= simpleDateFormat.format(new Date());
         this.graceMasse = gracemasse;
+        this.isLast = isLast;
+    }
+    
+    public BodyUser(int weight, boolean isLast, Long idUser) {
+        this.idUser = idUser;
+        this.weight = weight;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        this.recordDate= simpleDateFormat.format(new Date());
+        this.graceMasse = 0;
         this.isLast = isLast;
     }
 
@@ -76,32 +85,28 @@ public class BodyUser {
         this.recordDate = recordDate;
     }
 
-    /**
-     * @return the gracemasse
-     */
-    public int getGracemasse() {
-        return graceMasse;
-    }
-
-    /**
-     * @param gracemasse the gracemasse to set
-     */
-    public void setGracemasse(int gracemasse) {
-        this.graceMasse = gracemasse;
-    }
 
     /**
      * @return the isLast
      */
-    public int getIsLast() {
+    public boolean getIsLast() {
         return isLast;
     }
 
     /**
      * @param isLast the isLast to set
      */
-    public void setIsLast(int isLast) {
+    public void setIsLast(boolean isLast) {
         this.isLast = isLast;
+    }
+    
+    
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
 

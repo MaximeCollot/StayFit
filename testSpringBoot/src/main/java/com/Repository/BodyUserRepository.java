@@ -22,4 +22,7 @@ public interface BodyUserRepository extends CrudRepository<BodyUser, Long>{
     @Query("SELECT b FROM BodyUser b WHERE b.idUser = :idUser")
     public Iterable<BodyUser> findBodyUserByUser(@Param("idUser") Long idUser);
     
+    @Query("SELECT b FROM BodyUser b WHERE b.idUser = :idUser AND b.isLast = 1")
+    public BodyUser findByIdUserAndIsLast(@Param("idUser") Long idUser);
+    
 }

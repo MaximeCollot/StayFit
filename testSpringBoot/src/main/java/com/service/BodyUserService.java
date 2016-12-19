@@ -9,6 +9,7 @@ import com.Model.BodyUser;
 
 /**
  *
+<<<<<<< HEAD
  * @author louis
  */
 public interface BodyUserService {
@@ -26,4 +27,10 @@ public interface BodyUserService {
         public void delete(BodyUser bu);
         
         public void save(BodyUser bu);
+                
+        public void saveAndUpdate(BodyUser u);
+        
+        public BodyUser findByIdUserAndIsLast (Long iduser);
+        
+   
 }
