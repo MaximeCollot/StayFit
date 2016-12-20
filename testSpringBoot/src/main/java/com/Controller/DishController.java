@@ -9,6 +9,7 @@ import com.Model.Dish;
 import com.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,13 +27,14 @@ public class DishController {
     @Autowired
     private DishService dishService;
     
+        @CrossOrigin(origins = "*" )
      @RequestMapping(value = "/dish", method = RequestMethod.GET)
     Iterable<Dish> selectAll() throws Exception{
        return dishService.findAll();
     }
     
     
-    
+        @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/dish/create")
     @ResponseBody
     public HttpStatus createDish(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
@@ -46,7 +48,7 @@ public class DishController {
         return HttpStatus.ACCEPTED;
     }
     
-    //@ResponseBody
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/dish/delete/{id}")
     public HttpStatus DeleteDish(@PathVariable Long id) {
         try {

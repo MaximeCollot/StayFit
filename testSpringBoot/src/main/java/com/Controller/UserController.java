@@ -42,15 +42,16 @@ public class UserController {
     @Autowired
     private BodyUserService bodyUserService;
    
+    @CrossOrigin(origins = "*" )
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     Iterable<User> selectAll() throws Exception{
        return userService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, @RequestParam(value = "weight") int weight, HttpServletResponse response) throws ParseException {
+    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, @RequestParam(value = "weight") int weight) throws ParseException {
         String[] birthdayArray = birthday.split("/");
         String birthdaySimpleFormat = birthdayArray[2]+"-"+birthdayArray[1]+"-"+birthdayArray[0];
         User u = new User(id,firstname, lastname, birthdaySimpleFormat, sexe, size);
@@ -67,7 +68,7 @@ public class UserController {
         return HttpStatus.ACCEPTED;
     }
     
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/user/updategoal")
     @ResponseBody
     public HttpStatus updateIdGoalUser(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") Long idgoal) throws ParseException {
@@ -82,7 +83,7 @@ public class UserController {
         return HttpStatus.ACCEPTED;
     }
     
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/user/find/{id}")
      public User findUserById(@PathVariable Long id) {
          User user = new User();
@@ -99,7 +100,7 @@ public class UserController {
         return user; 
      }
     
-    //@ResponseBody
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/user/delete/{id}")
     public HttpStatus DeleteUser(@PathVariable Long id) {
         try {
@@ -116,6 +117,7 @@ public class UserController {
                 
     }
     
+    @CrossOrigin(origins = "*" )
     @RequestMapping("/index")
     public String index() {
         System.out.println("Bienvenue chez les users");

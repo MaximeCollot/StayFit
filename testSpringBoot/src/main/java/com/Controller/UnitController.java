@@ -9,6 +9,7 @@ import com.Model.Unit;
 import com.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class UnitController {
     }
     
     
-    
+        @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/unit/create")
     @ResponseBody
     public HttpStatus createUnit(@RequestParam(value = "unit") String unit, @RequestParam(value = "description") String description) {
@@ -46,7 +47,7 @@ public class UnitController {
         return HttpStatus.ACCEPTED;
   }
     
-    //@ResponseBody
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/unit/delete/{id}")
     public HttpStatus DeleteUnit(@PathVariable Long id) {
         try {

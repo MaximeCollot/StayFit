@@ -44,12 +44,13 @@ public class BodyUserController {
     @Autowired
     private BodyUserService bodyUserService;
     
+        @CrossOrigin(origins = "*" )
         @RequestMapping(value = "/bodyusers", method = RequestMethod.GET)
     Iterable<BodyUser> selectAll() throws Exception{
        return bodyUserService.findAll();
     }
     
-           // @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/bodyuser/find/{id}")
      public Iterable<BodyUser> findBodyUserByUser(@PathVariable Long id) {
        try {
@@ -64,7 +65,7 @@ public class BodyUserController {
         }
      }
 
-    //@CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/bodyUser/create")
     @ResponseBody
     public HttpStatus createUser(@RequestParam(value = "idUser") Long id, @RequestParam(value = "weight") int weight, @RequestParam(value = "gracemass") int gracemass,HttpServletResponse response) throws ParseException {
@@ -78,7 +79,7 @@ public class BodyUserController {
         return HttpStatus.ACCEPTED;
     }
     
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/bodyUser/insert")
     @ResponseBody
     public HttpStatus insertUser(@RequestParam(value = "idUser") Long id, @RequestParam(value = "weight") int weight, @RequestParam(value = "gracemass") int gracemass,HttpServletResponse response) throws ParseException {
@@ -92,7 +93,7 @@ public class BodyUserController {
         return HttpStatus.ACCEPTED;
     }
     
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/bodyUser/find/{id}")
      public Iterable<BodyUser> findBodyUserById(@PathVariable Long id) {
         return bodyUserService.findBodyUserByUser(id);
@@ -112,7 +113,7 @@ public class BodyUserController {
 */
     }
      
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/bodyUser/findLast/{id}")
      public BodyUser findByIdUserAndIsLast(@PathVariable Long id) {
         return bodyUserService.findByIdUserAndIsLast(id);
@@ -131,6 +132,7 @@ public class BodyUserController {
                 return bodyUsers; */
      } 
     
+         @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/bodyuser/create")
     @ResponseBody
     public HttpStatus createBodyUser(@RequestParam(value = "weight") int weight, @RequestParam(value = "gracemasse") int gracemasse, @RequestParam(value = "isLast") boolean isLast, @RequestParam(value = "idUser") Long idUser) {
@@ -144,7 +146,7 @@ public class BodyUserController {
         return HttpStatus.ACCEPTED;
     }
     
-    //@ResponseBody
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/bodyUser/delete/{id}")
     public HttpStatus DeleteUser(@PathVariable Long id) {
         try {

@@ -28,13 +28,13 @@ public class UserConnectController {
     @Autowired
     private UserConnectService userConnectService;
     
-     @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
      @RequestMapping(value = "/userConnect", method = RequestMethod.GET)
     Iterable<UserConnect> selectAll() throws Exception{
        return userConnectService.findAll();
     }
     
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/login")
      public Long findUserConnectByEmail(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
          Long idUser = userConnectService.findIdByEmail(email);
@@ -56,12 +56,11 @@ public class UserConnectController {
         }
      }
     
-   // @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/create")
     @ResponseBody
     public long createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
         UserConnect u = new UserConnect(email,psw);
-        System.out.println(u.getEmail());
         try {
             userConnectService.save(u);
         } catch (Exception e) {
@@ -73,7 +72,7 @@ public class UserConnectController {
     
     
     
-   @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/userConnect/delete/{id}")
     public HttpStatus deleteUserConnect(@PathVariable Long id) {
         try {
