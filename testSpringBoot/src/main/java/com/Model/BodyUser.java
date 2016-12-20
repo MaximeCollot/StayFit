@@ -109,5 +109,15 @@ public class BodyUser {
         this.idUser = idUser;
     }
 
+    public int getGraceMasse() {
+        return graceMasse;
+    }
+
+    public void setGraceMasse(int graceMasse) {
+        this.graceMasse = graceMasse;
+    }
+    
+    
+
 
 }

@@ -28,7 +28,7 @@ public class GoalController {
     private GoalService goalService;
     
         @CrossOrigin(origins = "*" )
-     @RequestMapping(value = "/goal", method = RequestMethod.GET)
+    @RequestMapping(value = "/goal", method = RequestMethod.GET)
     Iterable<Goal> selectAll() throws Exception{
        return goalService.findAll();
     }
@@ -51,7 +51,7 @@ public class GoalController {
      }
     
     
-        @CrossOrigin(origins = "*" )
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/goal/create")
     @ResponseBody
     public HttpStatus createGoal(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
