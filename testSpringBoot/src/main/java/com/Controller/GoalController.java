@@ -9,6 +9,7 @@ import com.Model.Goal;
 import com.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,13 +27,31 @@ public class GoalController {
     @Autowired
     private GoalService goalService;
     
-     @RequestMapping(value = "/goal", method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(value = "/goal", method = RequestMethod.GET)
     Iterable<Goal> selectAll() throws Exception{
        return goalService.findAll();
     }
     
+    //@CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.GET, value = "/goal/find/{id}")
+     public Goal findGoalById(@PathVariable Long id) {
+         Goal g = new Goal();
+       try {
+            if (goalService.exists(id)) {
+                 g = goalService.findOne(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+        return g; 
+     }
     
     
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/goal/create")
     @ResponseBody
     public HttpStatus createGoal(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {

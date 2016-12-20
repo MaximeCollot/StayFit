@@ -5,8 +5,11 @@
  */
 package com.Repository;
 
+import com.Model.Exercise;
 import com.Model.Practice;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,6 +19,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PracticeRepository extends CrudRepository<Practice, Long>{
     
-    
+        
+    @Query("SELECT b FROM Practice b WHERE b.idGoal = :idGoal")
+    public Iterable<Practice> findPracticeByGoal(@Param("idGoal") Long idGoal);
 }
 

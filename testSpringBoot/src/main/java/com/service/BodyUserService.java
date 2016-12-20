@@ -9,9 +9,12 @@ import com.Model.BodyUser;
 
 /**
  *
- * @author Maxime
+<<<<<<< HEAD
+ * @author louis
  */
 public interface BodyUserService {
+    
+        public Iterable<BodyUser> findBodyUserByUser(Long idUser);
     
         public  Iterable<BodyUser> findAll();
         
@@ -21,15 +24,13 @@ public interface BodyUserService {
         
         public void delete(Long id);
         
-        public void delete(BodyUser u);
+        public void delete(BodyUser bu);
         
-        public void save(BodyUser u);
-        
+        public void save(BodyUser bu);
+                
         public void saveAndUpdate(BodyUser u);
-        
-        public Iterable<BodyUser> findBodyUserByUser(Long iduser);
         
         public BodyUser findByIdUserAndIsLast (Long iduser);
         
-        
+   
 }

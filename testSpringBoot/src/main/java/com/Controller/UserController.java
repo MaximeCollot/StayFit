@@ -68,6 +68,21 @@ public class UserController {
     }
     
     @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.POST, value = "/user/updategoal")
+    @ResponseBody
+    public HttpStatus updateIdGoalUser(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") Long idgoal) throws ParseException {
+        User u = userService.findOne(id);
+        u.setIdGoal(idgoal);
+        try {
+            userService.save(u);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return HttpStatus.NOT_ACCEPTABLE;
+        }
+        return HttpStatus.ACCEPTED;
+    }
+    
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.GET, value = "/user/find/{id}")
      public User findUserById(@PathVariable Long id) {
          User user = new User();
@@ -83,6 +98,21 @@ public class UserController {
         }
         return user; 
      }
+     
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.POST, value = "/user/setgoal")
+    @ResponseBody
+    public HttpStatus setGoal(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") long idgoal, HttpServletResponse response) throws ParseException {
+        User u = userService.findOne(id);
+        try {
+            u.setIdGoal(idgoal);
+            userService.save(u);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return HttpStatus.NOT_ACCEPTABLE;
+        }
+        return HttpStatus.ACCEPTED;
+    }
     
     //@ResponseBody
    @RequestMapping(method = RequestMethod.DELETE, value = "/user/delete/{id}")

@@ -6,6 +6,11 @@
 package com.Controller;
 
 import com.Model.BodyUser;
+import com.service.BodyUserService;
+import java.util.Iterator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import com.Model.User;
 import com.Model.UserConnect;
 import com.service.BodyUserService;
@@ -27,22 +32,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Maxime
+<<<<<<< HEAD
+ * @author louis
  */
 @RestController
 @ControllerAdvice
 public class BodyUserController {
     
+        @Autowired
+    private UserConnectService userConnectService;
     @Autowired
     private BodyUserService bodyUserService;
     
-    @Autowired
-    private UserConnectService userConnectService;
-   
-    @RequestMapping(value = "/bodyUser", method = RequestMethod.GET)
+        @RequestMapping(value = "/bodyusers", method = RequestMethod.GET)
     Iterable<BodyUser> selectAll() throws Exception{
        return bodyUserService.findAll();
     }
+    
+           // @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(method = RequestMethod.GET, value = "/bodyuser/find/{id}")
+     public Iterable<BodyUser> findBodyUserByUser(@PathVariable Long id) {
+       try {
+            if (bodyUserService.exists(id)) {
+                 return bodyUserService.findBodyUserByUser(id);
+            } else {
+                  return null;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return null;
+        }
+     }
 
     //@CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(method = RequestMethod.POST, value = "/bodyUser/create")
@@ -108,8 +128,20 @@ public class BodyUserController {
             System.err.println(e.getStackTrace());
             return null;
         }
-        return bodyUsers; 
-*/
+                return bodyUsers; */
+     } 
+    
+    @RequestMapping(method = RequestMethod.POST, value = "/bodyuser/create")
+    @ResponseBody
+    public HttpStatus createBodyUser(@RequestParam(value = "weight") int weight, @RequestParam(value = "gracemasse") int gracemasse, @RequestParam(value = "isLast") boolean isLast, @RequestParam(value = "idUser") Long idUser) {
+        BodyUser u = new BodyUser(weight, gracemasse,isLast, idUser);
+        try {
+            bodyUserService.save(u);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return HttpStatus.METHOD_FAILURE;
+        }
+        return HttpStatus.ACCEPTED;
     }
     
     //@ResponseBody
@@ -128,4 +160,5 @@ public class BodyUserController {
         return HttpStatus.ACCEPTED;
                 
     }
+    
 }
