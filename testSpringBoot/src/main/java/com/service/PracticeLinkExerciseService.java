@@ -15,6 +15,8 @@ import org.springframework.data.repository.query.Param;
  */
 public interface PracticeLinkExerciseService {
     
+        public PracticeLinkExercise findDataByPracticeExercise(@Param("idPractice") Long idPractice,@Param("idExercise") Long idExercise );
+    
         public List<Long> findExerciseByPractice(@Param("idPractice") Long idPractice);
 
         public  Iterable<PracticeLinkExercise> findAll();

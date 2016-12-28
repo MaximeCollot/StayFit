@@ -40,7 +40,7 @@ public class PracticeController {
     private ExerciseService exoService;
      
     @CrossOrigin(origins = "*" )
-     @RequestMapping(value = "/practice", method = RequestMethod.GET)
+    @RequestMapping(value = "/practice", method = RequestMethod.GET)
     Iterable<Practice> selectAll() throws Exception{
        return practiceService.findAll();
     }
@@ -74,17 +74,20 @@ public class PracticeController {
          List<Practice> ple = new ArrayList<>();
          List<Long> listId = new ArrayList<>();
          List<Exercise> listExo = new ArrayList<>();
+         Exercise e = new Exercise();
        try {
               ple.addAll((Collection<? extends Practice>) practiceService.findPracticeByGoal(id));
               for (Practice p : ple) {
                   listId = pleService.findExerciseByPractice(p.getIdPractice());
                   for (Long i : listId) {
-                      listExo.add(exoService.findOne(i));
+                      e = exoService.findOne(i);
+                      e.setPle(pleService.findDataByPracticeExercise(p.getIdPractice(), i));
+                      listExo.add(e);
                   }
                   p.setListExo(listExo);
               }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
             return null;
         }
        return ple;

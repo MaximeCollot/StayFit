@@ -38,6 +38,7 @@ public class Practice {
 
     @Transient
     private List<Exercise> listExo;
+
     
     public Practice(){
         
@@ -73,7 +74,7 @@ public class Practice {
     public void setIsRecommended(int isRecommended) {
         this.isRecommended = isRecommended;
     }
-    
+
     
     public Long getIdPractice() {
         return idPractice;
