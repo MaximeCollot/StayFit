@@ -27,13 +27,13 @@ public class GoalController {
     @Autowired
     private GoalService goalService;
     
-    @CrossOrigin(origins = "http://localhost:8100")
+        @CrossOrigin(origins = "*" )
     @RequestMapping(value = "/goal", method = RequestMethod.GET)
     Iterable<Goal> selectAll() throws Exception{
        return goalService.findAll();
     }
     
-    //@CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/goal/find/{id}")
      public Goal findGoalById(@PathVariable Long id) {
          Goal g = new Goal();
@@ -51,7 +51,7 @@ public class GoalController {
      }
     
     
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/goal/create")
     @ResponseBody
     public HttpStatus createGoal(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
@@ -65,7 +65,7 @@ public class GoalController {
         return HttpStatus.ACCEPTED;
     }
     
-    //@ResponseBody
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/goal/delete/{id}")
     public HttpStatus DeleteGoal(@PathVariable Long id) {
         try {

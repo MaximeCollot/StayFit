@@ -22,25 +22,29 @@ public class Exercise {
     
     @Column(name="exercise_description")
     private String descriptionExercise;
-    
-    @Column(name="exercise_is_leg")
-    private int legExercise;
+   
     
     @Column(name="exercise_difficulty_leg")
     private int legDifficultyExercice;
     
-    @Column(name="exercise_is_arm")
-    private int armExercise;
-    
     @Column(name="exercise_difficulty_arm")
     private int difficultyArmExercise;
-    
-    @Column(name="exercise_is_cheast")
-    private int cheastExercise;
     
     @Column(name="exercise_difficulty_cheast")
     private int difficultyCheastExercise;
     
+    @Column(name="exercise_difficulty_shoulder")
+    private int difficultyShoulderExercise;
+    
+     @Column(name="exercise_difficulty_abs")
+    private int difficultyAbsExercise;
+     
+    @Column(name="exercise_difficulty_butt")
+    private int difficultyButtExercise;
+    
+    @Column(name="exercise_difficulty_back")
+    private int difficultyBackExercise;
+        
     @Column(name="exercise_picture")
     private String pictureExercise;
     
@@ -49,15 +53,17 @@ public class Exercise {
         
     }
 
-    public Exercise(String nameExercise, String descriptionExercise,int legExercise, int legDifficultyExercice, int armExercise, int difficultyArmExercise, int cheastExercise, int difficultyCheastExercise, String pictureExercise   ) {
+    public Exercise(String nameExercise, String descriptionExercise ,int legDifficultyExercice, int difficultyArmExercise, int difficultyCheastExercise,int difficultyShoulderExercise, int difficultyAbsExercise, int difficultyButtExercise, int difficultyBackExercise,  String pictureExercise) {
         this.nameExercise = nameExercise;
         this.descriptionExercise = descriptionExercise;
-        this.legExercise = legExercise;
         this.legDifficultyExercice = legDifficultyExercice;
-        this.armExercise = armExercise;
         this.difficultyArmExercise = difficultyArmExercise;
-        this.cheastExercise = cheastExercise;
         this.difficultyCheastExercise = difficultyCheastExercise;
+        this.difficultyShoulderExercise = difficultyShoulderExercise;
+        this.difficultyAbsExercise = difficultyAbsExercise;
+        this.difficultyButtExercise = difficultyButtExercise;
+        this.difficultyBackExercise = difficultyBackExercise;
+
 	this.pictureExercise = pictureExercise;
     }
 
@@ -77,12 +83,36 @@ public class Exercise {
         this.descriptionExercise = descriptionExercise;
     }
 
-    public int getLegExercise() {
-        return legExercise;
+    public int getDifficultyShoulderExercise() {
+        return difficultyShoulderExercise;
     }
 
-    public void setLegExercise(int legExercise) {
-        this.legExercise = legExercise;
+    public void setDifficultyShoulderExercise(int difficultyShoulderExercise) {
+        this.difficultyShoulderExercise = difficultyShoulderExercise;
+    }
+
+    public int getDifficultyAbsExercise() {
+        return difficultyAbsExercise;
+    }
+
+    public void setDifficultyAbsExercise(int difficultyAbsExercise) {
+        this.difficultyAbsExercise = difficultyAbsExercise;
+    }
+
+    public int getDifficultyButtExercise() {
+        return difficultyButtExercise;
+    }
+
+    public void setDifficultyButtExercise(int difficultyButtExercise) {
+        this.difficultyButtExercise = difficultyButtExercise;
+    }
+
+    public int getDifficultyBackExercise() {
+        return difficultyBackExercise;
+    }
+
+    public void setDifficultyBackExercise(int difficultyBackExercise) {
+        this.difficultyBackExercise = difficultyBackExercise;
     }
 
     public int getLegDifficultyExercice() {
@@ -93,28 +123,12 @@ public class Exercise {
         this.legDifficultyExercice = legDifficultyExercice;
     }
 
-    public int getArmExercise() {
-        return armExercise;
-    }
-
-    public void setArmExercise(int armExercise) {
-        this.armExercise = armExercise;
-    }
-
     public int getDifficultyArmExercise() {
         return difficultyArmExercise;
     }
 
     public void setDifficultyArmExercise(int difficultyArmExercise) {
         this.difficultyArmExercise = difficultyArmExercise;
-    }
-
-    public int getCheastExercise() {
-        return cheastExercise;
-    }
-
-    public void setCheastExercise(int cheastExercise) {
-        this.cheastExercise = cheastExercise;
     }
 
     public int getDifficultyCheastExercise() {

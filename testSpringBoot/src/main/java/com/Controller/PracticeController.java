@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
@@ -37,13 +38,14 @@ public class PracticeController {
     
      @Autowired
     private ExerciseService exoService;
-    
+     
+    @CrossOrigin(origins = "*" )
      @RequestMapping(value = "/practice", method = RequestMethod.GET)
     Iterable<Practice> selectAll() throws Exception{
        return practiceService.findAll();
     }
     
-     // @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/practice/find/{id}")
      public Practice findPracticeById(@PathVariable Long id) {
          
@@ -55,7 +57,7 @@ public class PracticeController {
         }
      }
      
-               // @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/practice/goal/{id}")
      public Iterable<Practice> findPracticeByIdGoal(@PathVariable Long id) {
        try {
@@ -66,7 +68,7 @@ public class PracticeController {
         }
      }
      
-          // @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.GET, value = "/practice/findpractices/{id}")
      public List<Practice> findPracticeByGoal(@PathVariable Long id) {
          List<Practice> ple = new ArrayList<>();
@@ -88,7 +90,7 @@ public class PracticeController {
        return ple;
      }
     
-    
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/practice/create")
     @ResponseBody
     public HttpStatus createPractice(@RequestParam(value = "date") String date, @RequestParam(value = "isDone") int isDone,@RequestParam(value = "isRecommended") int isRecommended, @RequestParam(value = "idUser") Long idUser ) {
@@ -102,7 +104,7 @@ public class PracticeController {
         return HttpStatus.ACCEPTED;
     }
     
-    //@ResponseBody
+    @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/practice/delete/{id}")
     public HttpStatus DeletePractice(@PathVariable Long id) {
         try {
