@@ -55,5 +55,10 @@ public class PracticeLinkExerciseServiceImpl implements PracticeLinkExerciseServ
     public List<Long> findExerciseByPractice(Long idPractice) {
         return practExerRepo.findExerciseByPractice(idPractice);
     }
+
+    @Override
+    public PracticeLinkExercise findDataByPracticeExercise(Long idPractice, Long idExercise) {
+            return practExerRepo.findDataByPracticeExercise(idPractice, idExercise);
+        }
     
 }

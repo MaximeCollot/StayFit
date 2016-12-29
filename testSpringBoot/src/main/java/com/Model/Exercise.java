@@ -48,6 +48,10 @@ public class Exercise {
     @Column(name="exercise_picture")
     private String pictureExercise;
     
+        
+    @Transient
+    private PracticeLinkExercise ple;
+    
 
     public Exercise(){
         
@@ -154,4 +158,13 @@ public class Exercise {
     public Long getIdExercise(){
         return idExercise;
     }
+    
+      public PracticeLinkExercise getPle() {
+        return ple;
+    }
+
+    public void setPle(PracticeLinkExercise ple) {
+        this.ple = ple;
+    }
+    
 }

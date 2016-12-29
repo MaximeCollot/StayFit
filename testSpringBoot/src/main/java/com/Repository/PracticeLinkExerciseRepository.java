@@ -21,4 +21,7 @@ public interface PracticeLinkExerciseRepository extends CrudRepository<PracticeL
     
     @Query("SELECT p.idExercise FROM PracticeLinkExercise p WHERE p.idPractice = :idPractice")
     public List<Long> findExerciseByPractice(@Param("idPractice") Long idPractice);
+    
+    @Query("SELECT p FROM PracticeLinkExercise p WHERE p.idPractice = :idPractice AND p.idExercise = :idExercise")
+    public PracticeLinkExercise findDataByPracticeExercise(@Param("idPractice") Long idPractice,@Param("idExercise") Long idExercise );
 }

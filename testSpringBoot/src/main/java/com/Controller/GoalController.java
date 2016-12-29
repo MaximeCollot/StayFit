@@ -51,7 +51,7 @@ public class GoalController {
      }
     
     
-    @CrossOrigin(origins = "*" )
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/goal/create")
     @ResponseBody
     public HttpStatus createGoal(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
@@ -65,7 +65,7 @@ public class GoalController {
         return HttpStatus.ACCEPTED;
     }
     
-    @CrossOrigin(origins = "*" )
+   @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/goal/delete/{id}")
     public HttpStatus DeleteGoal(@PathVariable Long id) {
         try {

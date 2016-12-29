@@ -16,7 +16,7 @@ public class PracticeLinkExercise {
     private int id;    
            
     @Column(name="exercise_repetition")
-    private int repetiton;
+    private int repetition;
     
     @Column(name="exercise_set")
     private int set;
@@ -35,20 +35,20 @@ public class PracticeLinkExercise {
         
     }
 
-    public PracticeLinkExercise(int repetiton, int set, int duration,Long idPractice, Long idExercise) {
-        this.repetiton = repetiton;
+    public PracticeLinkExercise(int repetition, int set, int duration,Long idPractice, Long idExercise) {
+        this.repetition = repetition;
         this.set = set;
         this.duration = duration;
         this.idExercise = idExercise;
         this.idPractice = idPractice;
     }
 
-    public int getRepetiton() {
-        return repetiton;
+    public int getRepetition() {
+        return repetition;
     }
 
-    public void setRepetiton(int repetiton) {
-        this.repetiton = repetiton;
+    public void setRepetition(int repetiton) {
+        this.repetition = repetiton;
     }
 
     public int getSet() {
