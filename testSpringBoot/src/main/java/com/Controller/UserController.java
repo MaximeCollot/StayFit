@@ -7,7 +7,6 @@ package com.Controller;
 
 import com.Model.BodyUser;
 import com.Model.User;
-import com.Model.UserConnect;
 import com.service.BodyUserService;
 import com.service.UserConnectService;
 import com.service.UserService;
@@ -100,7 +99,7 @@ public class UserController {
         return user; 
      }
      
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/user/setgoal")
     @ResponseBody
     public HttpStatus setGoal(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") long idgoal, HttpServletResponse response) throws ParseException {
