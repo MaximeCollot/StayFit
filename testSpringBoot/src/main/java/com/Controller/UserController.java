@@ -102,7 +102,7 @@ public class UserController {
     @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/user/setgoal")
     @ResponseBody
-    public HttpStatus setGoal(@RequestParam(value = "id") Long id, @RequestParam(value = "idgoal") long idgoal, HttpServletResponse response) throws ParseException {
+    public HttpStatus setGoal(@RequestParam(value = "id") Long id, @RequestParam(value = "idGoal") long idgoal, HttpServletResponse response) throws ParseException {
         User u = userService.findOne(id);
         try {
             u.setIdGoal(idgoal);
