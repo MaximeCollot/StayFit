@@ -6,35 +6,43 @@
 package com.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 
-@Embeddable //  /!\ A verifier !!!
+@Entity
 @Table(name="t_meallinkdish")
 public class MealLinkDish {
    
-   // /!\ Pas d'ID !!!!
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="mld_id", nullable = false)
+    private Long idMld;
+       
     @Column(name="dish_quantity")
     private int quantity;
     
-    @ManyToOne
-    @JoinColumn(name = "t_meal_idt_diner", referencedColumnName ="idt_diner")
-    // /!\ idT_Diner à modifier dans BDD !!!
-    private int idDiner;
+    @Column(name = "t_meal_idt_diner")
+    private Long idDiner;
     
-    @ManyToOne
-    @JoinColumn(name = "t_dish_idt_dish", referencedColumnName ="idt_dish")
-    private int idDish;
-    
-    @ManyToOne
-    @JoinColumn(name = "t_unit_idt_unit", referencedColumnName ="idt_unit")
-    private int idUnit;
+    @Column(name = "t_dish_idt_dish")
+    private Long idDish;
+   
 
-    public MealLinkDish(){
-        
+    public MealLinkDish(){    
     }
 
-    public MealLinkDish(int quantity) {
+    public MealLinkDish(int quantity, Long idDiner, Long idDish) {
         this.quantity = quantity;
+        this.idDiner = idDiner;
+        this.idDish = idDish;
+    }
+
+    public Long getIdMle() {
+        return idMld;
+    }
+
+    public void setIdMle(Long idMld) {
+        this.idMld = idMld;
     }
 
     public int getQuantity() {
@@ -44,6 +52,26 @@ public class MealLinkDish {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public Long getIdDiner() {
+        return idDiner;
+    }
+
+    public void setIdDiner(Long idDiner) {
+        this.idDiner = idDiner;
+    }
+
+    public Long getIdDish() {
+        return idDish;
+    }
+
+    public void setIdDish(Long idDish) {
+        this.idDish = idDish;
+    }
+    
+    
+
+    
     
     
 }

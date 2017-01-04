@@ -14,7 +14,7 @@ public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idt_dish", nullable = false)
-    private int idDish;
+    private Long idDish;
     
     @Column(name="dish_name")
     private String name;
@@ -22,18 +22,62 @@ public class Dish {
     @Column(name="dish_description")
     private String description;
     
-    //@ManyToOne
-    @JoinColumn(name = "t_goal_idt_goal", referencedColumnName ="idt_goal")
-    private int idGoal;
+    @Column(name="dish_recette")
+    private String dishRecette;
     
+     @Column(name="dish_caloriepercent")
+    private int caloriePercent;
+    
+    @Column(name="dish_proteinpercent")
+    private int proteinePercent;
+    
+    @Column(name="dish_glucidepercent")
+    private int glucidePercent;
+    
+    @Column(name="dish_lipidpercent")
+    private int lipidePercent;
+    
+    @Transient
+    MealLinkDish mld;
     
     public Dish(){
         
     }
 
-    public Dish(String name, String description) {
+    public Dish(String name, String description, String dishRecette, int caloriePercent, int proteinePercent, int glucidePercent, int lipidePercent) {
         this.name = name;
         this.description = description;
+        this.dishRecette = dishRecette;
+        this.caloriePercent = caloriePercent;
+        this.proteinePercent = proteinePercent;
+        this.glucidePercent = glucidePercent;
+        this.lipidePercent = lipidePercent;
+    }
+
+    public String getDishRecette() {
+        return dishRecette;
+    }
+
+    public void setDishRecette(String dishRecette) {
+        this.dishRecette = dishRecette;
+    }
+
+    public MealLinkDish getMld() {
+        return mld;
+    }
+
+    public void setMld(MealLinkDish mld) {
+        this.mld = mld;
+    }
+    
+    
+
+    public Long getIdDish() {
+        return idDish;
+    }
+
+    public void setIdDish(Long idDish) {
+        this.idDish = idDish;
     }
 
     public String getName() {
@@ -52,8 +96,45 @@ public class Dish {
         this.description = description;
     }
 
-    public int getIdDish() {
-        return idDish;
+    public String getDishRecete() {
+        return dishRecette;
     }
+
+    public void setDishRecete(String dishRecete) {
+        this.dishRecette = dishRecete;
+    }
+
+    public int getCaloriePercent() {
+        return caloriePercent;
+    }
+
+    public void setCaloriePercent(int caloriePercent) {
+        this.caloriePercent = caloriePercent;
+    }
+
+    public int getProteinePercent() {
+        return proteinePercent;
+    }
+
+    public void setProteinePercent(int proteinePercent) {
+        this.proteinePercent = proteinePercent;
+    }
+
+    public int getGlucidePercent() {
+        return glucidePercent;
+    }
+
+    public void setGlucidePercent(int glucidePercent) {
+        this.glucidePercent = glucidePercent;
+    }
+
+    public int getLipidePercent() {
+        return lipidePercent;
+    }
+
+    public void setLipidePercent(int lipidePercent) {
+        this.lipidePercent = lipidePercent;
+    }
+
     
 }

@@ -47,7 +47,6 @@ public class Exercise {
         
     @Column(name="exercise_picture")
     private String pictureExercise;
-    
         
     @Transient
     private PracticeLinkExercise ple;

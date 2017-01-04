@@ -34,15 +34,15 @@ public class DishController {
     }
     
     
-        @CrossOrigin(origins = "*" )
+    @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/dish/create")
     @ResponseBody
-    public HttpStatus createDish(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description) {
-        Dish d = new Dish(name,description);
+    public HttpStatus createDish(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description,@RequestParam(value = "dishRecete") String dishRecette,@RequestParam(value = "caloriePercent") int caloriePercent,@RequestParam(value = "proteinePercent") int proteinePercent, @RequestParam(value = "glucidePercent") int glucidePercent,@RequestParam(value = "lipidePercent") int lipidePercent) {
+        Dish d = new Dish(name, description, dishRecette, caloriePercent, proteinePercent,glucidePercent,lipidePercent);
         try {
             dishService.save(d);
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            System.err.println(e.getMessage());
             return HttpStatus.NOT_ACCEPTABLE;
                     }
         return HttpStatus.ACCEPTED;
@@ -58,7 +58,7 @@ public class DishController {
                 return HttpStatus.NOT_ACCEPTABLE;
             }
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            System.err.println(e.getMessage());
             return HttpStatus.NOT_ACCEPTABLE;
         }
         return HttpStatus.ACCEPTED;

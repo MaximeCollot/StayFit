@@ -51,7 +51,7 @@ public class UserConnectController {
                   return null;
             }
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            System.err.println(e.getMessage());
             return null;
         }
      }
@@ -64,7 +64,7 @@ public class UserConnectController {
         try {
             userConnectService.save(u);
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            System.err.println(e.getMessage());
             return 0;
         }
         return  u.getIduser();
@@ -82,7 +82,7 @@ public class UserConnectController {
                   return HttpStatus.NOT_ACCEPTABLE;
                 }
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            System.err.println(e.getMessage());
                 return HttpStatus.NOT_ACCEPTABLE;       
         }
      return HttpStatus.ACCEPTED;                
