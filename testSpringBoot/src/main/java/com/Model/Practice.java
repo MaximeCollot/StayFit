@@ -5,6 +5,7 @@
  */
 package com.Model;
 
+import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -44,11 +45,14 @@ public class Practice {
         
     }
 
-    public Practice(String date, int isDone, int isRecommended, Long idUser) {
+    public Practice(String name, Long idGoal,Long idUser) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        this.practiceName=name;
         this.idUser = idUser;
-        this.date = date;
-        this.isDone = isDone;
-        this.isRecommended = isRecommended;
+        this.idGoal = idGoal;
+        this.date = simpleDateFormat.format(new Date());
+        this.isDone = 0;
+        this.isRecommended = 1;
     }
 
     public String getDate() {

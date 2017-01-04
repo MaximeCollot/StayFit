@@ -16,7 +16,6 @@ public class DishLinkFood {
     @Column(name="idt_dishlinkfood")
     private Long idt_dishlinkfood;
     
-   // /!\ Pas d'ID !!!!
     @Column(name="food_quantity")
     private int foodQuantity;
     

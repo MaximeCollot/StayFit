@@ -7,10 +7,12 @@ package com.Controller;
 
 import com.Model.Exercise;
 import com.Model.Practice;
+import com.Model.PracticeLinkExercise;
 import com.service.ExerciseService;
 import com.service.PracticeLinkExerciseService;
 import com.service.PracticeService;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,7 +65,7 @@ public class PracticeController {
        try {
               return practiceService.findPracticeByGoal(id);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+           System.err.println("[ERREUR]"+ e.getMessage());
             return null;
         }
      }
@@ -98,10 +100,25 @@ public class PracticeController {
     @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/practice/create")
     @ResponseBody
-    public HttpStatus createPractice(@RequestParam(value = "date") String date, @RequestParam(value = "isDone") int isDone,@RequestParam(value = "isRecommended") int isRecommended, @RequestParam(value = "idUser") Long idUser ) {
-        Practice p = new Practice(date,isDone,isRecommended, idUser);
+    public Object createPractice(@RequestParam(value = "name") String name, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser) {
+        Practice p = new Practice(name, idGoal, idUser);
         try {
             practiceService.save(p);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return HttpStatus.NOT_ACCEPTABLE;        
+        }
+        return p.getIdPractice();
+    }
+    
+        
+    @CrossOrigin(origins = "*" )
+    @RequestMapping(method = RequestMethod.POST, value = "/practice/addExo")
+    @ResponseBody
+    public HttpStatus addExo(@RequestParam(value = "idPractice") Long idPractice, @RequestParam(value = "idExo") Long idExo, @RequestParam(value = "set") int set, @RequestParam(value = "duration") int duration, @RequestParam(value = "repetition") int repetition) {
+        PracticeLinkExercise ple = new PracticeLinkExercise(repetition, set, duration, idPractice, idExo);;
+        try {
+              pleService.save(ple);
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return HttpStatus.NOT_ACCEPTABLE;        
