@@ -14,9 +14,8 @@ com/Model/Dish.class
 com/Repository/GoalRepository.class
 com/Model/Exercise.class
 com/service/DishService.class
-com/Controller/PracticeLinkController.class
-com/Repository/UserRepository.class
 com/Repository/PracticeRepository.class
+com/Repository/UserRepository.class
 com/service/UnitServiceImpl.class
 com/Model/MealLinkDish.class
 com/service/BodyUserServiceImpl.class
@@ -30,8 +29,8 @@ com/Repository/DishRepository.class
 com/Repository/UnitRepository.class
 com/Repository/FoodRepository.class
 com/Main.class
-com/Controller/GoalController.class
 com/Controller/DishController.class
+com/Controller/GoalController.class
 com/Controller/UserController.class
 com/service/UserConnectServiceImpl.class
 com/Controller/UnitController.class
