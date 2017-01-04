@@ -16,6 +16,7 @@ com/Model/Dish.class
 com/Repository/GoalRepository.class
 com/Model/Exercise.class
 com/service/DishService.class
+com/Controller/PracticeLinkController.class
 com/Repository/UserRepository.class
 com/Repository/PracticeRepository.class
 com/service/UnitServiceImpl.class
