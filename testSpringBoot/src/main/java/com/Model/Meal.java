@@ -47,20 +47,24 @@ public class Meal {
     @Column(name = "t_user_iduser")
     private Long idUser;
 
+    @Column(name = "meal_name")
+    private String mealName;
+    
     @Transient
     List<Dish> listDish;
     
     public Meal() {
     }
 
-    public Meal( String description, int idDietitian, int isRecommended, Long idGoal, Long idUser) {         
+    public Meal( String description, int idDietitian, int isRecommended, Long idGoal, Long idUser, String mealName) {         
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        this.creationDate = simpleDateFormat.format(new Date());;
+        this.creationDate = simpleDateFormat.format(new Date());
         this.description = description;
         this.idDietitian = idDietitian;
         this.isRecommended = isRecommended;
         this.idGoal = idGoal;
         this.idUser = idUser;
+        this.mealName = mealName;
     }
 
     public List<Dish> getListDish() {
@@ -125,12 +129,14 @@ public class Meal {
 
     public void setIdUser(Long idUser) {
         this.idUser = idUser;
+    } 
+    
+    public String getMealName() {
+        return mealName;
     }
-    
-    
-    
-    
-    
-    
+
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
+    }
     
 }

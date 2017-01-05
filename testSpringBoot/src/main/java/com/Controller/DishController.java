@@ -37,8 +37,8 @@ public class DishController {
     @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/dish/create")
     @ResponseBody
-    public HttpStatus createDish(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description,@RequestParam(value = "dishRecete") String dishRecette,@RequestParam(value = "caloriePercent") int caloriePercent,@RequestParam(value = "proteinePercent") int proteinePercent, @RequestParam(value = "glucidePercent") int glucidePercent,@RequestParam(value = "lipidePercent") int lipidePercent) {
-        Dish d = new Dish(name, description, dishRecette, caloriePercent, proteinePercent,glucidePercent,lipidePercent);
+        public HttpStatus createDish(@RequestParam(value = "name") String name, @RequestParam(value = "description") String description,@RequestParam(value = "dishRecete") String dishRecette,@RequestParam(value = "caloriePercent") int caloriePercent,@RequestParam(value = "proteinePercent") int proteinePercent, @RequestParam(value = "glucidePercent") int glucidePercent,@RequestParam(value = "lipidePercent") int lipidePercent, @RequestParam(value = "picture") String picture) {
+        Dish d = new Dish(name, description, dishRecette, caloriePercent, proteinePercent,glucidePercent,lipidePercent, picture);
         try {
             dishService.save(d);
         } catch (Exception e) {

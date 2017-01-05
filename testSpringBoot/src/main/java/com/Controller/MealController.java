@@ -51,8 +51,8 @@ public class MealController {
     @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/meal/create")
     @ResponseBody
-    public HttpStatus createMeal(@RequestParam(value = "description") String description, @RequestParam(value = "idDietitian") int idDietitian, @RequestParam(value = "isRecommended") int isRecommended, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser ) {
-        Meal m = new Meal( description, idDietitian, isRecommended, idGoal, idUser);
+    public HttpStatus createMeal(@RequestParam(value = "description") String description, @RequestParam(value = "idDietitian") int idDietitian, @RequestParam(value = "isRecommended") int isRecommended, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser, @RequestParam(value = "mealName") String mealName ) {
+        Meal m = new Meal( description, idDietitian, isRecommended, idGoal, idUser, mealName);
         try {
             mealService.save(m);
         } catch (Exception e) {
@@ -87,6 +87,7 @@ public class MealController {
          List<Long> listId = new ArrayList<>();
          Dish e = new Dish();
          List<Dish> listDish;
+         MealLinkDish mld = new MealLinkDish();
        try {
               listMeal.addAll((Collection<? extends Meal>) mealService.findMealByGoal(id));
               for (Meal m : listMeal) {
@@ -95,7 +96,13 @@ public class MealController {
                   System.err.println("List Dish : "+ listId.toString() +"IdMeal"+m.getIdDiner());
                   for (Long i : listId) {
                       e = dishService.findOne(i);
-                      e.setMld(mldService.findDataByPMealDish(m.getIdDiner(), i));
+                      mld = mldService.findDataByPMealDish(m.getIdDiner(), i);
+                      System.err.println("Calorie :"+e.getCaloriePercent());
+                      e.setCaloriePercent(e.getCaloriePercent()*mld.getQuantity()/100);
+                      e.setGlucidePercent(e.getGlucidePercent()*mld.getQuantity()/100);
+                      e.setLipidePercent(e.getLipidePercent()*mld.getQuantity()/100);
+                      e.setProteinePercent(e.getProteinePercent()*mld.getQuantity()/100);
+                      e.setMld(mld);
                       listDish.add(e);
                   }
                   m.setListDish(listDish);

@@ -37,6 +37,9 @@ public class Dish {
     @Column(name="dish_lipidpercent")
     private int lipidePercent;
     
+    @Column(name="dish_picture")
+    private String dishPicture;
+    
     @Transient
     MealLinkDish mld;
     
@@ -44,7 +47,7 @@ public class Dish {
         
     }
 
-    public Dish(String name, String description, String dishRecette, int caloriePercent, int proteinePercent, int glucidePercent, int lipidePercent) {
+    public Dish(String name, String description, String dishRecette, int caloriePercent, int proteinePercent, int glucidePercent, int lipidePercent, String picture) {
         this.name = name;
         this.description = description;
         this.dishRecette = dishRecette;
@@ -52,6 +55,7 @@ public class Dish {
         this.proteinePercent = proteinePercent;
         this.glucidePercent = glucidePercent;
         this.lipidePercent = lipidePercent;
+        this.dishPicture = picture;
     }
 
     public String getDishRecette() {
@@ -96,14 +100,6 @@ public class Dish {
         this.description = description;
     }
 
-    public String getDishRecete() {
-        return dishRecette;
-    }
-
-    public void setDishRecete(String dishRecete) {
-        this.dishRecette = dishRecete;
-    }
-
     public int getCaloriePercent() {
         return caloriePercent;
     }
@@ -134,6 +130,14 @@ public class Dish {
 
     public void setLipidePercent(int lipidePercent) {
         this.lipidePercent = lipidePercent;
+    }
+
+    public String getDishPicture() {
+        return dishPicture;
+    }
+
+    public void setDishPicture(String dishPicture) {
+        this.dishPicture = dishPicture;
     }
 
     
