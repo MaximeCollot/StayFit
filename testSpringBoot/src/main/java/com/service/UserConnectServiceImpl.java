@@ -5,9 +5,13 @@
  */
 package com.service;
 
+import com.Model.User;
 import com.Model.UserConnect;
 import com.Repository.UserConnectRepository;
 import com.Repository.UserRepository;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -60,6 +64,20 @@ public class UserConnectServiceImpl implements UserConnectService{
     @Override
     public Long findIdByEmail(String email) {
         return userConnectRepo.findIdByEmail(email);
+    }
+    
+    @Override
+    public boolean emailExist(String email) {
+        List<UserConnect>  listU = new ArrayList<>();
+        listU = (List<UserConnect>) (Collection<? extends UserConnect>) userConnectRepo.findAll();
+        
+        for (UserConnect uc : listU) {
+            if(uc.getEmail().equals(email)){
+                return true;
+            }
+        }
+        
+        return false;
     }
 
 }

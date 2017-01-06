@@ -26,16 +26,16 @@ public class Dish {
     private String dishRecette;
     
      @Column(name="dish_caloriepercent")
-    private int caloriePercent;
+    private int calorie;
     
     @Column(name="dish_proteinpercent")
-    private int proteinePercent;
+    private int proteine;
     
     @Column(name="dish_glucidepercent")
-    private int glucidePercent;
+    private int glucide;
     
     @Column(name="dish_lipidpercent")
-    private int lipidePercent;
+    private int lipide;
     
     @Column(name="dish_picture")
     private String dishPicture;
@@ -51,10 +51,10 @@ public class Dish {
         this.name = name;
         this.description = description;
         this.dishRecette = dishRecette;
-        this.caloriePercent = caloriePercent;
-        this.proteinePercent = proteinePercent;
-        this.glucidePercent = glucidePercent;
-        this.lipidePercent = lipidePercent;
+        this.calorie = caloriePercent;
+        this.proteine = proteinePercent;
+        this.glucide = glucidePercent;
+        this.lipide = lipidePercent;
         this.dishPicture = picture;
     }
 
@@ -100,37 +100,39 @@ public class Dish {
         this.description = description;
     }
 
-    public int getCaloriePercent() {
-        return caloriePercent;
+    public int getCalorie() {
+        return calorie;
     }
 
-    public void setCaloriePercent(int caloriePercent) {
-        this.caloriePercent = caloriePercent;
+    public void setCalorie(int calorie) {
+        this.calorie = calorie;
     }
 
-    public int getProteinePercent() {
-        return proteinePercent;
+    public int getProteine() {
+        return proteine;
     }
 
-    public void setProteinePercent(int proteinePercent) {
-        this.proteinePercent = proteinePercent;
+    public void setProteine(int proteine) {
+        this.proteine = proteine;
     }
 
-    public int getGlucidePercent() {
-        return glucidePercent;
+    public int getGlucide() {
+        return glucide;
     }
 
-    public void setGlucidePercent(int glucidePercent) {
-        this.glucidePercent = glucidePercent;
+    public void setGlucide(int glucide) {
+        this.glucide = glucide;
     }
 
-    public int getLipidePercent() {
-        return lipidePercent;
+    public int getLipide() {
+        return lipide;
     }
 
-    public void setLipidePercent(int lipidePercent) {
-        this.lipidePercent = lipidePercent;
+    public void setLipide(int lipide) {
+        this.lipide = lipide;
     }
+
+    
 
     public String getDishPicture() {
         return dishPicture;

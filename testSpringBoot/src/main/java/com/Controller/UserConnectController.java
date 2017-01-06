@@ -59,10 +59,14 @@ public class UserConnectController {
     @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/userConnect/create")
     @ResponseBody
-    public long createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
+    public Object createUserConnect(@RequestParam(value = "email") String email, @RequestParam(value = "psw") String psw) {
         UserConnect u = new UserConnect(email,psw);
         try {
-            userConnectService.save(u);
+            if(userConnectService.emailExist(email)){
+                return -1;
+            }else{
+               userConnectService.save(u);
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return 0;

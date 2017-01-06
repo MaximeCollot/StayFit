@@ -15,6 +15,8 @@ import org.springframework.data.repository.query.Param;
  */
 public interface UserConnectService {
     
+        public boolean emailExist(String email);
+    
         public Long findIdByEmail(@Param("email") String email);
     
         public String findPswByEmail(@Param("email") String email);

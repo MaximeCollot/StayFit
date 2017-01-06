@@ -27,7 +27,7 @@ public class DishController {
     @Autowired
     private DishService dishService;
     
-        @CrossOrigin(origins = "*" )
+     @CrossOrigin(origins = "*" )
      @RequestMapping(value = "/dish", method = RequestMethod.GET)
     Iterable<Dish> selectAll() throws Exception{
        return dishService.findAll();

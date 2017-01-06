@@ -93,15 +93,14 @@ public class MealController {
               for (Meal m : listMeal) {
                   listDish = new ArrayList<>();
                   listId = mldService.findDishByMeal(m.getIdDiner());
-                  System.err.println("List Dish : "+ listId.toString() +"IdMeal"+m.getIdDiner());
                   for (Long i : listId) {
                       e = dishService.findOne(i);
                       mld = mldService.findDataByPMealDish(m.getIdDiner(), i);
-                      System.err.println("Calorie :"+e.getCaloriePercent());
-                      e.setCaloriePercent(e.getCaloriePercent()*mld.getQuantity()/100);
-                      e.setGlucidePercent(e.getGlucidePercent()*mld.getQuantity()/100);
-                      e.setLipidePercent(e.getLipidePercent()*mld.getQuantity()/100);
-                      e.setProteinePercent(e.getProteinePercent()*mld.getQuantity()/100);
+                      System.err.println("Calorie :"+e.getCalorie());
+                      e.setCalorie(e.getCalorie()*mld.getQuantity()/100);
+                      e.setGlucide(e.getGlucide()*mld.getQuantity()/100);
+                      e.setLipide(e.getLipide()*mld.getQuantity()/100);
+                      e.setProteine(e.getProteine()*mld.getQuantity()/100);
                       e.setMld(mld);
                       listDish.add(e);
                   }

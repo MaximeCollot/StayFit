@@ -12,7 +12,7 @@ import com.Model.User;
  * @author louis
  */
 public interface UserService {
-    
+        
         public  Iterable<User> findAll();
         
         public User findOne(Long id);
