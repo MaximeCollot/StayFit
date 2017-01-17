@@ -51,7 +51,7 @@ public class MealController {
     @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/meal/create")
     @ResponseBody
-    public HttpStatus createMeal(@RequestParam(value = "description") String description, @RequestParam(value = "idDietitian") int idDietitian, @RequestParam(value = "isRecommended") int isRecommended, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser, @RequestParam(value = "mealName") String mealName ) {
+    public Object createMeal(@RequestParam(value = "description") String description, @RequestParam(value = "idDietitian") int idDietitian, @RequestParam(value = "isRecommended") int isRecommended, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser, @RequestParam(value = "mealName") String mealName ) {
         Meal m = new Meal( description, idDietitian, isRecommended, idGoal, idUser, mealName);
         try {
             mealService.save(m);
@@ -59,7 +59,7 @@ public class MealController {
             System.err.println(e.getMessage());
             return HttpStatus.NOT_ACCEPTABLE;
         }
-        return HttpStatus.ACCEPTED;
+        return m.getIdDiner();
     }
     
     
