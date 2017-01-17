@@ -46,7 +46,7 @@ public class User {
      @Column(name = "user_idgoal")
      private Long idGoal;
 
-    public User(Long id, String firstname, String lastname, String birthday, String sexe, int size) throws ParseException {
+    public User(Long id, String firstname, String lastname, String birthday, String sexe, int size, String picture) throws ParseException {
       
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.iduser = id;
@@ -57,6 +57,7 @@ public class User {
         this.birthday = birthday;
         this.sexe = sexe;
         this.size = size;
+        this.picture = picture;
     }
     
      
