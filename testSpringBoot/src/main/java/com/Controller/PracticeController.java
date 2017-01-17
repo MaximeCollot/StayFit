@@ -100,8 +100,8 @@ public class PracticeController {
     @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/practice/create")
     @ResponseBody
-    public Object createPractice(@RequestParam(value = "name") String name, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser) {
-        Practice p = new Practice(name, idGoal, idUser);
+    public Object createPractice(@RequestParam(value = "name") String name, @RequestParam(value = "idGoal") Long idGoal, @RequestParam(value = "idUser") Long idUser, @RequestParam(value = "description") String description) {
+        Practice p = new Practice(name, idGoal, idUser, description);
         try {
             practiceService.save(p);
         } catch (Exception e) {

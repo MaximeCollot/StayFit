@@ -50,10 +50,10 @@ public class UserController {
     @CrossOrigin(origins = "*" )
     @RequestMapping(method = RequestMethod.POST, value = "/user/create")
     @ResponseBody
-    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, @RequestParam(value = "weight") int weight) throws ParseException {
+    public HttpStatus createUser(@RequestParam(value = "id") Long id, @RequestParam(value = "firstname") String firstname, @RequestParam(value = "lastname") String lastname,@RequestParam(value = "birthday") String birthday,  @RequestParam(value = "sexe") String sexe, @RequestParam(value = "size") int size, @RequestParam(value = "weight") int weight,@RequestParam(value = "picture") String picture) throws ParseException {
         String[] birthdayArray = birthday.split("/");
         String birthdaySimpleFormat = birthdayArray[2]+"-"+birthdayArray[1]+"-"+birthdayArray[0];
-        User u = new User(id,firstname, lastname, birthdaySimpleFormat, sexe, size);
+        User u = new User(id,firstname, lastname, birthdaySimpleFormat, sexe, size, picture);
         try {
             userService.save(u);
             if (weight != 0) {

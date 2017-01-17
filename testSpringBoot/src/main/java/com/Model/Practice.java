@@ -34,6 +34,9 @@ public class Practice {
     @Column(name="practice_is_recommended")
     private int isRecommended;
     
+    @Column(name="practice_description")
+    private String description;
+    
     @Column(name = "t_user_iduser")
     private Long idUser;
 
@@ -45,11 +48,12 @@ public class Practice {
         
     }
 
-    public Practice(String name, Long idGoal,Long idUser) {
+    public Practice(String name, Long idGoal,Long idUser, String description) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.practiceName=name;
         this.idUser = idUser;
         this.idGoal = idGoal;
+        this.description = description;
         this.date = simpleDateFormat.format(new Date());
         this.isDone = 0;
         this.isRecommended = 1;
@@ -114,6 +118,14 @@ public class Practice {
 
     public void setListExo(List<Exercise> listExo) {
         this.listExo = listExo;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }
