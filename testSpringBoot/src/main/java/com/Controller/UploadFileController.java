@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,12 +27,11 @@ public class UploadFileController {
     @CrossOrigin("*")
     @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes="multipart/form-data")
     @ResponseBody
-    public String handleFileUpload(@RequestParam("file") MultipartFile file) {
-        String name = "test11";
+    public String handleFileUpload(@RequestPart("file") MultipartFile file, @RequestParam("name") String name) { 
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("/var/www/html/ressources/"+name)));
                 stream.write(bytes);
                 stream.close();
                 return "You successfully uploaded " + name + " into " + name + "-uploaded !";
