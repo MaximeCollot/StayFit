@@ -37,7 +37,7 @@ public class ExerciseController {
     @RequestMapping(method = RequestMethod.POST, value = "/exercise/create")
     @ResponseBody
     public HttpStatus createPractice(@RequestParam(value = "nameExercise")  String nameExercise, @RequestParam(value = "descriptionExercise") String descriptionExercise,@RequestParam(value = "difficultyShoulderExercise") int difficultyShoulderExercise, @RequestParam(value = "legDifficultyExercice") int legDifficultyExercice, @RequestParam(value = "difficultyAbsExercise")int difficultyAbsExercise, @RequestParam(value = "difficultyArmExercise")  int difficultyArmExercise, @RequestParam(value = "difficultyButtExercise")  int difficultyButtExercise, @RequestParam(value = "difficultyBackExercise") int difficultyBackExercise, @RequestParam(value = "difficultyCheastExercise") int difficultyCheastExercise, @RequestParam(value = "pictureExercise") String pictureExercise  ) {
-        Exercise p = new Exercise(nameExercise,  descriptionExercise,  legDifficultyExercice,   difficultyArmExercise,  difficultyCheastExercise, difficultyShoulderExercise, difficultyAbsExercise, difficultyButtExercise, difficultyBackExercise, pictureExercise );
+        Exercise p = new Exercise(nameExercise,  descriptionExercise,  legDifficultyExercice,   difficultyArmExercise,  difficultyCheastExercise, difficultyShoulderExercise, difficultyAbsExercise, difficultyButtExercise, difficultyBackExercise, "ressources/"+pictureExercise );
         try {
             exerciseService.save(p);
         } catch (Exception e) {
