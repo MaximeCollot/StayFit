@@ -31,7 +31,7 @@ public class UploadFileController {
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("/var/www/html/ressources/"+name)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("/var/www/html/ressources/",name)));
                 stream.write(bytes);
                 stream.close();
                 return "You successfully uploaded " + name + " into " + name + "-uploaded !";
