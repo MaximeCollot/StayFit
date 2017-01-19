@@ -114,6 +114,21 @@ public class UserController {
         return HttpStatus.ACCEPTED;
     }
     
+     @CrossOrigin(origins = "*")
+    @RequestMapping(method = RequestMethod.POST, value = "/user/setpicture")
+    @ResponseBody
+    public HttpStatus setGoal(@RequestParam(value = "id") Long id, @RequestParam(value = "picture") String picture) throws ParseException {
+        User u = userService.findOne(id);
+        try {
+            u.setPicture(picture);
+            userService.save(u);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return HttpStatus.NOT_ACCEPTABLE;
+        }
+        return HttpStatus.ACCEPTED;
+    }
+    
     @CrossOrigin(origins = "*" )
    @RequestMapping(method = RequestMethod.DELETE, value = "/user/delete/{id}")
     public HttpStatus DeleteUser(@PathVariable Long id) {
